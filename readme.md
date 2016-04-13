@@ -20,7 +20,7 @@ Bitcoin lottery is a project which addresses and battles a lot of the issues peo
 
 ## Attachments:
 
-* [LeanCanvas](docs/Vedlegg-LeanCanvas.pdf)
+* [LeanCanvas](docs/LeanCanvas.pdf)
 * [External API usage](docs/API.JPG)
 * [Gherkin-based user stories (cucumber-features)](features/)
 
