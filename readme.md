@@ -3,7 +3,7 @@
 ### Participants(2)
 
 **Valmir Memeti**
-* Github: Valmir1995
+* Github: Valmir95
 * Email: Valmirmemeti@gmail.com
 * Westerdals: memval14
 
