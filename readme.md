@@ -20,9 +20,11 @@ Bitcoin lottery is a project which addresses and battles a lot of the issues peo
 
 ## Attachments:
 
-* [LeanCanvas](docs/LeanCanvas.pdf)
-* [External API usage](docs/API.JPG)
-* [Gherkin-based user stories (cucumber-features)](features/)
+* [LeanCanvas](documentation/LeanCanvas.pdf)
+* [External API usage](documentation/API.JPG)
+* [Project information](documentation/ProjectInformation.pdf)
+* [Wireframes] (documentation/wireframes/)
+* [Gherkin-based user stories (cucumber-features)](documentation/features/)
 
 ## Installation
 
