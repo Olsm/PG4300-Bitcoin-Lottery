@@ -22,4 +22,3 @@ Feature: Registration
      When I enter email or password that do not meet the criteria
      Then I expect to get an error message
       And I will be prompted to enter valid credentials
-     

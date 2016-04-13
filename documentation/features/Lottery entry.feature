@@ -6,9 +6,8 @@ Feature: Lottery Entry
   Scenario: Pay for lottery entry
     Given that I am in the homepage
      And see A lottery I can join
-     When I send payment to the lottery pool’s address
+     When I send payment to the lottery pool?s address
       And payment amount is the minimum entry amount
      Then I expect to have an entry for the lottery
       And my chance to win to be based on how much I paid
-
 

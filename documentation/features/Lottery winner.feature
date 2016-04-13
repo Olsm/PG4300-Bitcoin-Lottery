@@ -6,6 +6,3 @@ Feature: Lottery Winner
      When my entry is chosen
       And I win the lottery
      Then I expect to receive the prize to my chosen address
-
-
-

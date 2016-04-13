@@ -21,12 +21,3 @@ Scenario: Submit contact form with invalid info
      When I enter an invalid email, name and message
       And I submit the form
      Then I expect to receive an error message
-
-
-
-
-
-
-
-
-
