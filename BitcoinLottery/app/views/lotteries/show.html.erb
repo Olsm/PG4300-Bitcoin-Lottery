@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lottery:</strong>
+  <%= @lottery.lottery_id %>
+</p>
+
+<p>
+  <strong>Prize amount:</strong>
+  <%= @lottery.prize_amount %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @lottery.user_id %>
+</p>
+
+<p>
+  <strong>Bitcoin address:</strong>
+  <%= @lottery.bitcoin_address %>
+</p>
+
+<%= link_to 'Edit', edit_lottery_path(@lottery) %> |
+<%= link_to 'Back', lotteries_path %>

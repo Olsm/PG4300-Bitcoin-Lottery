@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414102647) do
+ActiveRecord::Schema.define(version: 20160414122554) do
+
+  create_table "lotteries", force: :cascade do |t|
+    t.integer  "lottery_id"
+    t.decimal  "prize_amount"
+    t.integer  "user_id"
+    t.string   "bitcoin_address"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "lottery_entries", force: :cascade do |t|
+    t.text     "email"
+    t.text     "bitcoin_address"
+    t.decimal  "amount_charged"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.text     "email"

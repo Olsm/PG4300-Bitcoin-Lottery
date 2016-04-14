@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @lottery_entry.email %>
+</p>
+
+<p>
+  <strong>Bitcoin address:</strong>
+  <%= @lottery_entry.bitcoin_address %>
+</p>
+
+<p>
+  <strong>Amount charged:</strong>
+  <%= @lottery_entry.amount_charged %>
+</p>
+
+<%= link_to 'Edit', edit_lottery_entry_path(@lottery_entry) %> |
+<%= link_to 'Back', lottery_entries_path %>

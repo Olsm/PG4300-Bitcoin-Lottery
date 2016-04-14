@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyText
+  bitcoin_address: MyText
+  amount_charged: 9.99
+
+two:
+  email: MyText
+  bitcoin_address: MyText
+  amount_charged: 9.99
