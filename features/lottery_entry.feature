@@ -4,7 +4,7 @@ Feature: Lottery Entry
   Chance of winning should be determined from the transaction amount.
 
   Scenario: Pay for lottery entry
-    Given that I am in the homepage
+    Given I am in the homepage
      And see A lottery I can join
      When I send payment to the lottery pool?s address
       And payment amount is the minimum entry amount
