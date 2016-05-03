@@ -15,6 +15,7 @@ Feature: Contact
      When I enter a valid email, name and message
       And I press "Submit"
      Then I should see notice "Thank you. We will respond as soon as possible"
+      And Bitcoin lottery should get my submission
       And I should receive a confirmation email
 
   Scenario: Submit contact form with invalid info
