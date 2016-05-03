@@ -7,15 +7,12 @@ When(/^I press "([^"]*)"$/) do |button|
 end
 
 And(/^I attach a file$/) do
-  attach_file('attachment', 'features/file_uploads/test.jpg')
+  attach_file('contact_file', 'features/file_uploads/test.jpg')
 end
 
-Then(/^the file will be uploaded$/) do
-  pending
-end
-
-And(/^added as an attachment$/) do
-  pending
+Then(/^File should be attachment in the email$/) do
+  email = ActionMailer::Base.deliveries.first
+  assert_equal "test.jpg", email.attachments.first.filename
 end
 
 When(/^I enter a valid email, name and message$/) do
@@ -25,7 +22,7 @@ When(/^I enter a valid email, name and message$/) do
 end
 
 Then(/^I should see notice "([^"]*)"$/) do |expected|
-  assert page.has_content? expected
+  assert_match /#{expected}/, page.body
 end
 
 And(/^Bitcoin lottery should get my submission$/) do
@@ -40,12 +37,10 @@ end
 And(/^I should receive a confirmation email$/) do
   email = ActionMailer::Base.deliveries[1]
   assert_equal ["admin@example.com"], email.from
-  assert_equal ["very@mail.wow"], email.to.should
+  assert_equal ["very@mail.wow"], email.to
   assert_match /Thank you for contacting Bitcoin Lottery/, email.body.raw_source
 end
 
 When(/^I enter an invalid email, name and message$/) do
-  fill_in('contact_name', :with => "Such N@me")
   fill_in('contact_email', :with => "so.invalid.mail")
-  fill_in('contact_message', :with => "Much me$$age!")
 end

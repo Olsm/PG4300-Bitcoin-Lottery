@@ -5,10 +5,10 @@ Feature: Contact
 
   Scenario: Add attachment
     Given I am on the contact us page
-     When I press "Add Attachment"
+     When I enter a valid email, name and message
       And I attach a file
-     Then the file will be uploaded
-      And added as an attachment
+      And I press "Submit"
+     Then File should be attachment in the email
 
   Scenario: Submit contact form
     Given I am on the contact us page
@@ -22,4 +22,5 @@ Feature: Contact
     Given I am on the contact us page
      When I enter an invalid email, name and message
       And I press "Submit"
-     Then I should see notice "Invalid input"
+     Then I should see notice "is invalid"
+      And I should see notice "can&#39;t be blank"
