@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'devise'
+gem 'mail_form'
+gem 'simple_form'
+gem 'actionmailer'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
