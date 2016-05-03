@@ -5,19 +5,20 @@ Feature: Contact
 
   Scenario: Add attachment
     Given I am on the contact us page
-     When I Chose to add attachment
-      And I chose a file to upload
+     When I press "Add Attachment"
+      And I attach a file
      Then the file will be uploaded
       And added as an attachment
 
-Scenario: Submit contact form
+  Scenario: Submit contact form
     Given I am on the contact us page
      When I enter a valid email, name and message
-      And I submit the form
-     Then I expect to receive a confirmation email of successful sending
+      And I press "Submit"
+     Then I should see notice "Thank you. We will respond as soon as possible"
+      And I should receive a confirmation email
 
-Scenario: Submit contact form with invalid info
+  Scenario: Submit contact form with invalid info
     Given I am on the contact us page
      When I enter an invalid email, name and message
-      And I submit the form
-     Then I expect to receive an error message
+      And I press "Submit"
+     Then I should see notice "Invalid input"
