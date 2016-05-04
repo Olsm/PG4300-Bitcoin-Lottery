@@ -8,12 +8,11 @@ Rails.application.initialize!
 ActionMailer::Base.raise_delivery_errors = true
 
 ActionMailer::Base.smtp_settings = {
-    :address        => 'cpanel.immortaltools.com',
-    :domain         => 'ghost.mxroute.com',
-    :ssl            => true,
-    :port           => '465',
-    :user_name      => 'bitcoinlottery@immortaltools.com',
-    :password       => 'SuchV3ryL0ttery',
+    :user_name => 'bitcoinlottery',
+    :password => 'Sdcz4zn4dALN3mV0KPPVJQ0VA6Gy0n3Ia270iK7c7gntKsP2UQ6HDchkBr9iLSCosPSjdIvhwJazKBYaHc31H9zgP5McYvpS3xFO',
+    :domain => 'immortaltools.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true
 }
