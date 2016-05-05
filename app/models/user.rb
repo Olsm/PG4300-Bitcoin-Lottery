@@ -11,11 +11,18 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
+    if self.where(email: auth.info.email).exists?
+      omniauth_user = self.where(email: auth.info.email).first
+      omniauth_user.provider = auth.provider
+      omniauth_user.uid = auth.uid
+    else
+      omniauth_user = self.create do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.email = auth.info.email
+      end
     end
+    return omniauth_user
   end
 
   def self.new_with_session(params, session)
