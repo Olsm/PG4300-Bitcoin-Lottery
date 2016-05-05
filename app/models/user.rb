@@ -3,6 +3,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
+  cattr_accessor :current_user
+
+  after_create :send_confirmation_email
+  def send_confirmation_email
+    UserMailer.registration_confirmation(self).deliver_now
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
