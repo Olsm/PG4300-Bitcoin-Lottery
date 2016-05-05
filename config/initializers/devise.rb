@@ -233,6 +233,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
+
   config.sign_out_via = :delete
 
   # ==> OmniAuth
@@ -241,7 +242,10 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
     config.omniauth :twitter, 'gcI5CYsNWCYq6m4kNLAJLWy8V', 'w2eBpLS3g1D0D2D8rfCtpqIEYBbB5006SfhfN93xgR34w8LQgZ', scope: 'email'
     config.omniauth :facebook, '502383686618041', '2b6bc8eb7aa441b52f9c5a4c8c5e1715',  :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" } }
-    config.omniauth :google_oauth2, '319046102107-5ml7bjovbjef7p2v7nktrh262gkd6o13.apps.googleusercontent.com', 'uIX5Y7-v-deu05bKpXe-ICdS'
+    config.omniauth :google_oauth2, '319046102107-5ml7bjovbjef7p2v7nktrh262gkd6o13.apps.googleusercontent.com', 'uIX5Y7-v-deu05bKpXe-ICdS' , {
+        scope: "email"
+    }
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
