@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
         user.provider = auth.provider
         user.uid = auth.uid
         user.email = auth.info.email
+        user.password = Devise.friendly_token.first(10)
       end
     end
     return omniauth_user
