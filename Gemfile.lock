@@ -41,6 +41,12 @@ GEM
     bcrypt (3.1.11-x64-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    block_io (1.0.6)
+      connection_pool (~> 2.0, >= 2.0.0)
+      ecdsa (~> 1.2, >= 1.2.0)
+      httpclient (~> 2.4, >= 2.4.0)
+      json (~> 1.8, >= 1.8.1)
+      pbkdf2-ruby (~> 0.2, >= 0.2.1)
     builder (3.2.2)
     byebug (8.2.5)
     capybara (2.7.1)
@@ -66,6 +72,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     concurrent-ruby (1.0.2)
+    connection_pool (2.2.0)
     cucumber (2.3.3)
       builder (>= 2.1.2)
       cucumber-core (~> 1.4.0)
@@ -92,6 +99,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    ecdsa (1.2.0)
     erubis (2.7.0)
     exception_notification (4.1.4)
       actionmailer (~> 4.0)
@@ -100,6 +108,7 @@ GEM
     gherkin (3.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    httpclient (2.8.0)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -123,6 +132,7 @@ GEM
     nokogiri (1.6.7.2-x64-mingw32)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
+    pbkdf2-ruby (0.2.1)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -198,6 +208,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  block_io
   byebug
   capybara-rails
   coffee-rails (~> 4.1.0)
