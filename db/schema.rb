@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503095125) do
+ActiveRecord::Schema.define(version: 20160506200440) do
 
   create_table "lotteries", force: :cascade do |t|
     t.integer  "lottery_id"
     t.decimal  "prize_amount"
-    t.integer  "user_id"
     t.string   "bitcoin_address"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -28,6 +27,8 @@ ActiveRecord::Schema.define(version: 20160503095125) do
     t.decimal  "amount_charged"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "lottery_id"
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
