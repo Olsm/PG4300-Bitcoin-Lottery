@@ -5,4 +5,8 @@ class Lottery < ActiveRecord::Base
     self.prize_amount = result['data']['available_balance']
   end
 
+  def get_lottery_entries
+    LotteryEntry.where(lottery_id = id)
+  end
+
 end
