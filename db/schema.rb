@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506200440) do
+ActiveRecord::Schema.define(version: 20160508123220) do
 
   create_table "lotteries", force: :cascade do |t|
     t.integer  "lottery_id"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20160506200440) do
   end
 
   create_table "lottery_entries", force: :cascade do |t|
-    t.string   "email"
     t.string   "bitcoin_address"
     t.decimal  "amount_charged"
     t.datetime "created_at",      null: false
