@@ -1,8 +1,10 @@
 class LotteryEntry < ActiveRecord::Base
+  after_validation :update_price, on: [:create, :update, :destroy]
 
-  after_commit do
-    lottery = Lottery.find_by id: lottery_id
+  belongs_to :lottery
+
+  def update_price
     lottery.update_prize
   end
 
-end
+  end
