@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508123220) do
+ActiveRecord::Schema.define(version: 20160509142212) do
 
   create_table "lotteries", force: :cascade do |t|
-    t.integer  "lottery_id"
     t.decimal  "prize_amount"
     t.string   "bitcoin_address"
     t.datetime "created_at",      null: false
