@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Transaction Id</th>
       <th>Email</th>
       <th>Bitcoin address</th>
       <th>Amount charged</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @lottery_entries.each do |lottery_entry| %>
       <tr>
+        <td><%= lottery_entry.transaction_id %></td>
         <td><%= lottery_entry.email %></td>
         <td><%= lottery_entry.bitcoin_address %></td>
         <td><%= lottery_entry.amount_charged %></td>
