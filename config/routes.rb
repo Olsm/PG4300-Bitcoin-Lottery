@@ -4,11 +4,15 @@ Rails.application.routes.draw do
   resources :lottery_entries
   resources :users
   resources :omniauth_callbacks
+
+  match '/contact', to: 'contacts#new', via: 'get'
+  resources :contacts, only: [:new, :create]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'users#index'
+  root 'lotteries#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

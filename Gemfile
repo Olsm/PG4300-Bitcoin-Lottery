@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'devise'
+gem 'mail_form'
+gem 'simple_form'
+gem 'actionmailer'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
