@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :lotteries
   resources :lottery_entries
   resources :users
+  resources :omniauth_callbacks
 
   match '/contact', to: 'contacts#new', via: 'get'
   resources :contacts, only: [:new, :create]
