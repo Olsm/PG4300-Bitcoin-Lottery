@@ -19,6 +19,8 @@
       <ul class="nav navbar-nav">
         <li class="inactive"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %> <span class="sr-only">(current)</span></li>
         <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+        <li><%= link_to "F.A.Q", static_pages_faq_path%></li>
+        <li><%= link_to "About us", static_pages_about_path%></li>
       </ul>
       <% if current_user.try(:admin?)%>
           <ul class="nav navbar-nav navbar-right">
@@ -40,6 +42,8 @@
                 <li role="separator" class="divider"></li>
                 <li><%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %></li>
               </ul>
+            <li><%= link_to "F.A.Q", static_pages_faq_path%></li>
+            <li><%= link_to "About us", static_pages_about_path%></li>
             </li>
           </ul>
 
