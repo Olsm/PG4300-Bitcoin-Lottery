@@ -11,25 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510193707) do
+ActiveRecord::Schema.define(version: 20160510202133) do
 
   create_table "lotteries", force: :cascade do |t|
-    t.decimal  "prize_amount"
-    t.string   "bitcoin_address"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.decimal  "prize_amount",    null: false
+    t.string   "bitcoin_address", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "winner_entry"
-    t.datetime "ends_at",         default: '2016-05-09 20:21:31', null: false
+    t.datetime "ends_at",         null: false
   end
 
   create_table "lottery_entries", force: :cascade do |t|
-    t.string   "bitcoin_address"
-    t.decimal  "amount_charged"
+    t.string   "bitcoin_address", null: false
+    t.decimal  "amount_charged",  null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "lottery_id"
+    t.integer  "lottery_id",      null: false
     t.integer  "user_id"
-    t.string   "transaction_id"
+    t.string   "transaction_id",  null: false
   end
 
   create_table "users", force: :cascade do |t|
