@@ -7,4 +7,4 @@ class LotteryEntry < ActiveRecord::Base
     lottery.update_prize
   end
 
-  end
+end

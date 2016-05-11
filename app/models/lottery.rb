@@ -8,6 +8,25 @@ class Lottery < ActiveRecord::Base
     self.save
   end
 
+  def update_entries
+    result = BlockIo.get_transactions :type => 'received', :addresses => bitcoin_address
+    transactions = []
+
+    transactions = result['data']['txs'] if result['status'] == "success"
+    return entries unless transactions.size > entries.size
+
+    transactions.each do |t|
+      unless entries.any? { |entry| entry.transaction_id == t['txid'] }
+        amount = t['amounts_received'].map {|a| a['amount'].to_d}.reduce(:+)
+        entry = LotteryEntry.create(lottery_id: id, transaction_id: t['txid'],
+                    amount_charged: amount, bitcoin_address: t['senders'].first)
+        self.entries.push entry
+      end
+    end
+
+    entries
+  end
+
   def end
     self.winner_entry = pick_winner
     #TODO: Send prize to winner
