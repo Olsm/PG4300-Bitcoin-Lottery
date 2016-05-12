@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @lottery_entry.email %>
+  <strong>Lottery Id:</strong>
+  <%= link_to @lottery_entry.lottery_id, lottery_path(@lottery_entry.lottery_id) %>
+</p>
+
+<p>
+  <strong>Transaction id:</strong>
+  <%= @lottery_entry.transaction_id %>
 </p>
 
 <p>
@@ -11,8 +16,18 @@
 </p>
 
 <p>
-  <strong>Amount charged:</strong>
+  <strong>Amount paid:</strong>
   <%= @lottery_entry.amount_charged %>
+</p>
+
+<p>
+  <strong>User Id:</strong>
+  <%= @lottery_entry.user_id %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @lottery_entry.created_at %>
 </p>
 
 <%= link_to 'Edit', edit_lottery_entry_path(@lottery_entry) %> |
