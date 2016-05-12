@@ -1,5 +1,5 @@
 class LotteryEntry < ActiveRecord::Base
-  after_validation :update_price, on: [:create, :update, :destroy]
+  after_commit :update_price
 
   belongs_to :lottery
 
