@@ -14,7 +14,7 @@ module BitcoinLottery
 
     # Setup block.io for BTCTESTNET
     BlockIo.set_options :api_key=> Rails.application.secrets.block_io_api_key,
-                        :pin => Rails.application.secrets.block_io_secret, :version => 2
+                        :pin => Rails.application.secrets.block_io_api_secret, :version => 2
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
