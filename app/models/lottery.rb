@@ -4,8 +4,8 @@ class Lottery < ActiveRecord::Base
 
   def update_prize
     result = BlockIo.get_address_balance :addresses => bitcoin_address
-    self.prize_amount = result['data']['available_balance']
-    self.save
+    update prize_amount: result['data']['available_balance']
+    prize_amount
   end
 
   def update_entries
@@ -28,8 +28,9 @@ class Lottery < ActiveRecord::Base
   end
 
   def end
-    self.winner_entry = pick_winner
-    #TODO: Send prize to winner
+    update winner_entry: pick_winner unless winner_entry
+    BlockIo.withdraw_from_addresses :amounts => prize_amount-0.0001, :from_addresses => bitcoin_address,
+                                    :to_addresses => entries.find(winner_entry).bitcoin_address
   end
 
   private
