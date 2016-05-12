@@ -2,9 +2,21 @@ class Lottery < ActiveRecord::Base
 
   has_many :entries, class_name: 'LotteryEntry'
 
+  def active?
+    ends_at > Time.current
+  end
+
+  def status
+    return "Completed" if winner_entry
+    return "Ended" unless active?
+    "Active"
+  end
+
   def update_prize
-    result = BlockIo.get_address_balance :addresses => bitcoin_address
-    update prize_amount: result['data']['available_balance']
+    if active?
+      result = BlockIo.get_address_balance :addresses => bitcoin_address
+      update prize_amount: result['data']['available_balance']
+    end
     prize_amount
   end
 
