@@ -45,9 +45,6 @@ gem 'font-awesome-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 group :test do
   gem 'cucumber-rails', require: false
   gem 'capybara-rails'
@@ -61,6 +58,8 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  # Use Capistrano for deployment
+  gem 'capistrano-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
