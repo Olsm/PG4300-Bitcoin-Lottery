@@ -13,6 +13,13 @@ class Lottery < ActiveRecord::Base
     return "Active"
   end
 
+  def self.update_lotteries
+    self.where(transaction_id: nil).each do |l|
+      l.update_entries if l.active?
+      l.end unless l.active?
+    end
+  end
+
   def update_prize
     if active?
       result = BlockIo.get_address_balance :addresses => bitcoin_address
