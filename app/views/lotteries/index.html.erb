@@ -25,13 +25,7 @@
         <td><%= l.ends_at %></td>
         <td><%= link_to l.winner_entry, lottery_entry_path(l.winner_entry) if l.winner_entry %></td>
         <td><%= link_to 'Show', l %></td>
-        <td><%= link_to 'Edit', edit_lottery_path(l) %></td>
-        <td><%= link_to 'Destroy', l, method: :delete, data: {confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Lottery', new_lottery_path %>
