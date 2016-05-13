@@ -6,7 +6,7 @@
 set :output, '/log/cron.log'
 
 every 1.minute do
-  runner 'Lottery.update_entries'
+  runner 'Lottery.update_lotteries'
 end
 
 # Learn more: http://github.com/javan/whenever
