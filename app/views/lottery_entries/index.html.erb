@@ -19,13 +19,9 @@
         <td><%= le.amount_charged %></td>
         <td><%= le.transaction_id %></td>
         <td><%= link_to 'Show', le %></td>
-        <td><%= link_to 'Edit', edit_lottery_entry_path(le) %></td>
-        <td><%= link_to 'Destroy', le, method: :delete, data: {confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Lottery entry', new_lottery_entry_path %>
