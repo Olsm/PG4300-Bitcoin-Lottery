@@ -7,15 +7,17 @@ class Lottery < ActiveRecord::Base
   end
 
   def status
-    return "Completed" if winner_entry
-    return "Ended" unless active?
-    "Active"
+    return "Completed" if transaction_id
+    return "Processing" if winner_entry
+    return "Drawing" unless active?
+    return "Active"
   end
 
   def update_prize
     if active?
       result = BlockIo.get_address_balance :addresses => bitcoin_address
-      update prize_amount: result['data']['available_balance']
+      balance = result['data']['available_balance']
+      update prize_amount: balance if prize_amount != balance.to_d
     end
     prize_amount
   end
@@ -25,14 +27,13 @@ class Lottery < ActiveRecord::Base
     transactions = []
 
     transactions = result['data']['txs'] if result['status'] == "success"
-    return entries unless transactions.size > entries.size
+    return entries if transactions.size == entries.size or not active?
 
     transactions.each do |t|
-      unless entries.any? { |entry| entry.transaction_id == t['txid'] }
+      if t['confirmations'] > 0 and not entries.any? { |entry| entry.transaction_id == t['txid'] }
         amount = t['amounts_received'].map {|a| a['amount'].to_d}.reduce(:+)
-        entry = LotteryEntry.create(lottery_id: id, transaction_id: t['txid'],
+        entry = entries.create(lottery_id: id, transaction_id: t['txid'],
                     amount_charged: amount, bitcoin_address: t['senders'].first)
-        self.entries.push entry
       end
     end
 
@@ -40,9 +41,15 @@ class Lottery < ActiveRecord::Base
   end
 
   def end
-    update winner_entry: pick_winner unless winner_entry
-    BlockIo.withdraw_from_addresses :amounts => prize_amount-0.0001, :from_addresses => bitcoin_address,
-                                    :to_addresses => entries.find(winner_entry).bitcoin_address
+    update winner_entry: pick_winner if winner_entry.nil?
+
+    if transaction_id.nil?
+      result = BlockIo.withdraw_from_addresses :amounts => prize_amount-0.0001, :from_addresses => bitcoin_address,
+                                               :to_addresses => entries.find(winner_entry).bitcoin_address
+      update transaction_id: result['data']['txid'] if result['status'] == "success"
+    end
+
+    winner_entry
   end
 
   private
