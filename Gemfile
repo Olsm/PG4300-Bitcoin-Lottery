@@ -4,10 +4,13 @@ gem 'devise'
 gem 'mail_form'
 gem 'simple_form'
 gem 'actionmailer'
-
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
+gem 'block_io'
+gem 'pickup'
+gem 'whenever', :require => false
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for Active Record

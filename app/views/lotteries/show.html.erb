@@ -1,23 +1,48 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Lottery:</strong>
-  <%= @lottery.lottery_id %>
+  <strong>Id:</strong>
+  <%= @lottery.id %>
 </p>
 
 <p>
-  <strong>Prize amount:</strong>
+  <strong>Status:</strong>
+  <%= @lottery.status %>
+</p>
+
+<p>
+  <strong>Prize:</strong>
   <%= @lottery.prize_amount %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @lottery.user_id %>
+  <strong>Address:</strong>
+  <%= @lottery.bitcoin_address %>
 </p>
 
 <p>
-  <strong>Bitcoin address:</strong>
-  <%= @lottery.bitcoin_address %>
+  <strong>Ends:</strong>
+  <%= @lottery.ends_at %>
+</p>
+
+<p>
+  <strong>Winner:</strong>
+  <%= link_to @lottery.winner_entry, lottery_entry_path(@lottery.winner_entry) %><%=  %>
+</p>
+
+<p>
+  <strong>Transaction Id:</strong>
+  <%= @lottery.transaction_id %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @lottery.created_at %>
+</p>
+
+<p>
+  <strong>Updated:</strong>
+  <%= @lottery.updated_at %>
 </p>
 
 <%= link_to 'Edit', edit_lottery_path(@lottery) %> |
