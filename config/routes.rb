@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   get 'static_pages/faq'
 
 
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-generate controller for static pages: about and faq
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :lotteries
   resources :lottery_entries
