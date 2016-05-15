@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
       omniauth_user = self.where(email: auth.info.email).first
       omniauth_user.provider = auth.provider
       omniauth_user.uid = auth.uid
+    elsif self.where(uid: auth.uid).exists?
+           omniauth_user = self.where(uid: auth.uid).first
+           omniauth_user.provider = auth.provider
+           omniauth_user.uid = auth.uid
+
     else
       omniauth_user = self.create do |user|
         user.provider = auth.provider
