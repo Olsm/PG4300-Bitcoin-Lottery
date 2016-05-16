@@ -2,19 +2,27 @@
 
 <h1>Listing Lotteries</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Status</th>
-      <th>Prize</th>
-      <th>Address</th>
-      <th>QR Code</th>
-      <th>Ends</th>
-      <th>Winner</th>
-      <th colspan="7"></th>
-    </tr>
-  </thead>
+
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class = "table-responsive">
+
+    <div class="panel-heading">Panel heading</div>
+
+    <!-- Table -->
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Status</th>
+        <th>Prize</th>
+        <th>Address</th>
+        <th>Ends</th>
+        <th>Winner</th>
+        <th colspan="7"></th>
+      </tr>
+      </thead>
+
 
   <tbody>
     <% @lotteries.each do |l| %>
@@ -30,4 +38,55 @@
       </tr>
     <% end %>
   </tbody>
+
 </table>
+
+  </div>
+</div>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">
+        No more tables.
+      </h1>
+      <h3 class="text-center">
+        Resize the browser screen to see how the table changes
+      </h3>
+    </div>
+    <div id="no-more-tables">
+      <table class="col-md-12 table-bordered table-striped table-condensed cf">
+        <thead class="cf">
+        <tr>
+          <th>Id</th>
+          <th>Status</th>
+          <th>Prize</th>
+          <th>Address</th>
+          <th>QR-code</th>
+          <th>Ends</th>
+          <th>Winner</th>
+          <th colspan="7"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @lotteries.each do |l| %>
+            <tr>
+              <td data-title = "ID"><%= l.id %></td>
+              <td data-title = "Status"><%= l.status %></td>
+              <td data-title = "Prize"><%= l.prize_amount %></td>
+              <td data-title = "Address"><%= l.bitcoin_address %></td>
+              <td data-title = "QR-code" class="qrcode"><img src=<%=l.qr_code%>></td>
+              <td data-title = "Ends"><%= l.ends_at %></td>
+              <td data-title = "Winner" ><%= link_to l.winner_entry, lottery_entry_path(l.winner_entry) if l.winner_entry %></td>
+              <td><%= link_to 'Show', l %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
