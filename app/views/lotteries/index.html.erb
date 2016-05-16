@@ -9,9 +9,10 @@
       <th>Status</th>
       <th>Prize</th>
       <th>Address</th>
+      <th>QR Code</th>
       <th>Ends</th>
       <th>Winner</th>
-      <th colspan="5"></th>
+      <th colspan="7"></th>
     </tr>
   </thead>
 
@@ -22,6 +23,7 @@
         <td><%= l.status %></td>
         <td><%= l.prize_amount %></td>
         <td><%= l.bitcoin_address %></td>
+        <td class="qrcode"><img src=<%=l.qr_code%>></td>
         <td><%= l.ends_at %></td>
         <td><%= link_to l.winner_entry, lottery_entry_path(l.winner_entry) if l.winner_entry %></td>
         <td><%= link_to 'Show', l %></td>

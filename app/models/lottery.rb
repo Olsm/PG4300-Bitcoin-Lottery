@@ -59,6 +59,10 @@ class Lottery < ActiveRecord::Base
     winner_entry
   end
 
+  def qr_code
+    "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=#{bitcoin_address}"
+  end
+
   private
 
   def pick_winner
