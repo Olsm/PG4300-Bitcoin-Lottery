@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516101114) do
+ActiveRecord::Schema.define(version: 20160516201313) do
 
   create_table "lotteries", force: :cascade do |t|
     t.decimal  "prize_amount",    default: 0.0, null: false
@@ -45,7 +45,8 @@ ActiveRecord::Schema.define(version: 20160516101114) do
     t.string  "name"
     t.decimal "amount"
     t.string  "address"
-    t.boolean "default", default: true
+    t.boolean "default",    default: true
+    t.boolean "percentage", default: true
   end
 
   create_table "users", force: :cascade do |t|

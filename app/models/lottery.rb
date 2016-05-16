@@ -78,13 +78,13 @@ class Lottery < ActiveRecord::Base
 
   def send_prize
     # First amount and address the winner, total fees must be subtracted from prize
-    amounts = prize_amount - total_fee
+    amounts = (prize_amount - total_fee).to_s
     addresses = entries.find(winner_entry).bitcoin_address
 
     # Add addresses and amounts for fees that has a specified address
     fees.where.not(address: nil).each do |fee|
-      addresses += ", #{fee.address}"
-      amounts += ", #{fee.amount}"
+      addresses += ",#{fee.address}"
+      amounts += ",#{fee.amount}"
     end
 
     result = BlockIo.withdraw_from_addresses :amounts => amounts,
@@ -94,10 +94,13 @@ class Lottery < ActiveRecord::Base
   end
 
   def total_fee
-    fee = 0
-    fees.each do |fee|
-      fee -= fee.amount
-    end
+    percent = fees.where(percentage: true)
+    static = fees.where(percentage: false)
+
+    percent = percent.map(&:amount).inject(0, :+)
+    static = static.map(&:amount).inject(0, :+)
+
+    prize_amount * percent /100 + static
   end
 
 end
