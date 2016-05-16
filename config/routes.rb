@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  resources :lotteries
-  resources :lottery_entries
-  resources :users
+  resources :lotteries, only: [:index, :show]
+  resources :lottery_entries, only: [:index, :show]
+  resources :users, only: [:index, :show]
   resources :omniauth_callbacks
 
   match '/contact', to: 'contacts#new', via: 'get'
