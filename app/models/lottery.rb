@@ -16,8 +16,8 @@ class Lottery < ActiveRecord::Base
   end
 
   def status
-    return "Completed" if transaction_id
-    return "Processing" if winner_entry
+    return "Completed" unless transaction_id.blank?
+    return "Processing" unless winner_entry.blank?
     return "Drawing" unless active?
     return "Active"
   end
@@ -57,8 +57,8 @@ class Lottery < ActiveRecord::Base
   end
 
   def end
-    update winner_entry: pick_winner if winner_entry.nil?
-    send_prize if transaction_id.nil?
+    update winner_entry: pick_winner if winner_entry.blank?
+    send_prize if transaction_id.blank?
     winner_entry
   end
 
@@ -82,11 +82,17 @@ class Lottery < ActiveRecord::Base
     addresses = entries.find(winner_entry).bitcoin_address
 
     # Add addresses and amounts for fees that has a specified address
-    fees.where.not(address: nil).each do |fee|
-      addresses += ",#{fee.address}"
-      amounts += ",#{fee.amount}"
+    percent = fees.where.not(address: [nil, '']).where(percentage: true)
+    static = fees.where.not(address: [nil, '']).where(percentage: false)
+
+    percent.zip(static).each do |p,s|
+      amounts += ",#{prize_amount / 100 * p.amount}" if p
+      amounts += ",#{s.amount}" if s
+      addresses += ",#{p.address}" if p
+      addresses += ",#{s.address}" if s
     end
 
+    # Send transaction to the specified amounts and addresses
     result = BlockIo.withdraw_from_addresses :amounts => amounts,
                                              :from_addresses => bitcoin_address,
                                              :to_addresses => addresses
