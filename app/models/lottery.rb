@@ -1,20 +1,29 @@
 class Lottery < ActiveRecord::Base
 
   has_many :entries, class_name: 'LotteryEntry'
+  has_and_belongs_to_many :fees, class_name: 'LotteryFee'
+
+  after_create :add_default_fees
+
+  def add_default_fees
+    LotteryFee.where(default: true).each do |fee|
+      fees << fee
+    end
+  end
 
   def active?
     ends_at > Time.current
   end
 
   def status
-    return "Completed" if transaction_id
-    return "Processing" if winner_entry
+    return "Completed" unless transaction_id.blank?
+    return "Processing" unless winner_entry.blank?
     return "Drawing" unless active?
     return "Active"
   end
 
   def self.update_lotteries
-    self.where(transaction_id: nil).each do |l|
+    self.where.not(bitcoin_address: [nil, '']).each do |l|
       l.update_entries if l.active?
       l.end unless l.active?
     end
@@ -48,15 +57,13 @@ class Lottery < ActiveRecord::Base
   end
 
   def end
-    update winner_entry: pick_winner if winner_entry.nil?
-
-    if transaction_id.nil?
-      result = BlockIo.withdraw_from_addresses :amounts => prize_amount-0.0001, :from_addresses => bitcoin_address,
-                                               :to_addresses => entries.find(winner_entry).bitcoin_address
-      update transaction_id: result['data']['txid'] if result['status'] == "success"
-    end
-
+    update winner_entry: pick_winner if winner_entry.blank?
+    send_prize if transaction_id.blank?
     winner_entry
+  end
+
+  def qr_code
+    "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=#{bitcoin_address}"
   end
 
   private
@@ -67,6 +74,39 @@ class Lottery < ActiveRecord::Base
 
     pickup = Pickup.new(entries, key_func: key_func, weight_func: weight_func)
     pickup.pick
+  end
+
+  def send_prize
+    # First amount and address the winner, total fees must be subtracted from prize
+    amounts = (prize_amount - total_fee).to_s
+    addresses = entries.find(winner_entry).bitcoin_address
+
+    # Add addresses and amounts for fees that has a specified address
+    percent = fees.where.not(address: [nil, '']).where(percentage: true)
+    static = fees.where.not(address: [nil, '']).where(percentage: false)
+
+    percent.zip(static).each do |p,s|
+      amounts += ",#{prize_amount / 100 * p.amount}" if p
+      amounts += ",#{s.amount}" if s
+      addresses += ",#{p.address}" if p
+      addresses += ",#{s.address}" if s
+    end
+
+    # Send transaction to the specified amounts and addresses
+    result = BlockIo.withdraw_from_addresses :amounts => amounts,
+                                             :from_addresses => bitcoin_address,
+                                             :to_addresses => addresses
+    update transaction_id: result['data']['txid'] if result['status'] == "success"
+  end
+
+  def total_fee
+    percent = fees.where(percentage: true)
+    static = fees.where(percentage: false)
+
+    percent = percent.map(&:amount).inject(0, :+)
+    static = static.map(&:amount).inject(0, :+)
+
+    prize_amount * percent /100 + static
   end
 
 end

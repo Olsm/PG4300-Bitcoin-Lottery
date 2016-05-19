@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513081606) do
+ActiveRecord::Schema.define(version: 20160516201313) do
 
   create_table "lotteries", force: :cascade do |t|
     t.decimal  "prize_amount",    default: 0.0, null: false
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20160513081606) do
     t.string   "transaction_id"
   end
 
+  create_table "lotteries_lottery_fees", id: false, force: :cascade do |t|
+    t.integer "lottery_id"
+    t.integer "lottery_fee_id"
+  end
+
+  add_index "lotteries_lottery_fees", ["lottery_fee_id"], name: "index_lotteries_lottery_fees_on_lottery_fee_id"
+  add_index "lotteries_lottery_fees", ["lottery_id"], name: "index_lotteries_lottery_fees_on_lottery_id"
+
   create_table "lottery_entries", force: :cascade do |t|
     t.string   "bitcoin_address", null: false
     t.decimal  "amount_charged",  null: false
@@ -31,6 +39,14 @@ ActiveRecord::Schema.define(version: 20160513081606) do
     t.integer  "lottery_id",      null: false
     t.integer  "user_id"
     t.string   "transaction_id",  null: false
+  end
+
+  create_table "lottery_fees", force: :cascade do |t|
+    t.string  "name"
+    t.decimal "amount"
+    t.string  "address"
+    t.boolean "default",    default: true
+    t.boolean "percentage", default: true
   end
 
   create_table "users", force: :cascade do |t|

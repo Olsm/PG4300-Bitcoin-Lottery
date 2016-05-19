@@ -21,13 +21,17 @@
 </p>
 
 <p>
+  <img src=<%=@lottery.qr_code%>>
+</p>
+
+<p>
   <strong>Ends:</strong>
   <%= @lottery.ends_at %>
 </p>
 
 <p>
   <strong>Winner:</strong>
-  <%= link_to @lottery.winner_entry, lottery_entry_path(@lottery.winner_entry) %><%=  %>
+  <%= link_to @lottery.winner_entry, lottery_entry_path(@lottery.winner_entry) unless @lottery.winner_entry.blank? %><%=  %>
 </p>
 
 <p>
