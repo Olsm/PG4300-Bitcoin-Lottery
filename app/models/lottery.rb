@@ -23,7 +23,7 @@ class Lottery < ActiveRecord::Base
   end
 
   def self.update_lotteries
-    self.where(transaction_id: nil).each do |l|
+    self.where.not(bitcoin_address: [nil, '']).each do |l|
       l.update_entries if l.active?
       l.end unless l.active?
     end
