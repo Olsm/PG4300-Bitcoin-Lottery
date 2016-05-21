@@ -14,4 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+
 //= require_tree .
+
+
+$('#my_modal').on('show.bs.modal', function(e) {
+    var bookId = $(e.relatedTarget).data('book-id');
+    $(e.currentTarget).find('input[name="bookId"]').val(bookId);
+});
+
+$('#myModal').on('show.bs.modal', function (e) {
+    if (!data) return e.preventDefault()
+    var myId = $(e.relatedTarget).data('book-id');
+    $(e.currentTarget).find('input[name="bookId"]').val(myId);// stops modal from being shown
+});
