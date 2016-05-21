@@ -1,52 +1,67 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Id:</strong>
-  <%= @lottery.id %>
-</p>
+<div class="col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-3">
 
-<p>
-  <strong>Status:</strong>
-  <%= @lottery.status %>
-</p>
+<div class="fieldset">
+  <h2>
+    <strong>Lottery #<%= @lottery.id %></strong>
+  </h2>
 
-<p>
-  <strong>Prize:</strong>
-  <%= @lottery.prize_amount %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @lottery.bitcoin_address %>
-</p>
 
-<p>
-  <img src=<%=@lottery.qr_code%>>
-</p>
 
-<p>
-  <strong>Ends:</strong>
-  <%= @lottery.ends_at %>
-</p>
+  <dl>
+    <dt>
+<span class="text_field label label-info string_type">
+Status
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery.status %>
+    </dd>
+    <dt>
+<span class="decimal_type label label-info prize_amount_field">
+Prize amount
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery.prize_amount %>
+    </dd>
 
-<p>
-  <strong>Winner:</strong>
-  <%= link_to @lottery.winner_entry, lottery_entry_path(@lottery.winner_entry) unless @lottery.winner_entry.blank? %><%=  %>
-</p>
+    <dt>
+<span class="bitcoin_address_field label label-info string_type">
+Bitcoin address
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery.bitcoin_address %>
+    </dd>
 
-<p>
-  <strong>Transaction Id:</strong>
-  <%= @lottery.transaction_id %>
-</p>
+    <dt>
+<span class="QR_code_field label label-info string_type">
+QR-code
+</span>
+    </dt>
+    <dd class="well">
+      <img src=<%=@lottery.qr_code%>>
+    </dd>
 
-<p>
-  <strong>Created:</strong>
-  <%= @lottery.created_at %>
-</p>
+    <dt>
+<span class="datetime_type ends_at_field label label-info">
+Ends at
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery.ends_at %>
+    </dd>
+    <dt>
+<span class="entries_field has_many_association_type label label-info">
+Winner
+</span>
+    </dt>
+    <dd class="well">
+      <%= link_to @lottery.winner_entry, lottery_entry_path(@lottery.winner_entry) unless @lottery.winner_entry.blank? %><%=  %>
+    </dd>
+  </dl>
+</div>
+</div>
 
-<p>
-  <strong>Updated:</strong>
-  <%= @lottery.updated_at %>
-</p>
-
-<%= link_to 'Back', lotteries_path %>
