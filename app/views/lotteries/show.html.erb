@@ -1,24 +1,67 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Lottery:</strong>
-  <%= @lottery.lottery_id %>
-</p>
+<div class="col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-3">
 
-<p>
-  <strong>Prize amount:</strong>
-  <%= @lottery.prize_amount %>
-</p>
+<div class="fieldset">
+  <h2>
+    <strong>Lottery #<%= @lottery.id %></strong>
+  </h2>
 
-<p>
-  <strong>User:</strong>
-  <%= @lottery.user_id %>
-</p>
 
-<p>
-  <strong>Bitcoin address:</strong>
-  <%= @lottery.bitcoin_address %>
-</p>
 
-<%= link_to 'Edit', edit_lottery_path(@lottery) %> |
-<%= link_to 'Back', lotteries_path %>
+
+  <dl>
+    <dt>
+<span class="text_field label label-info string_type">
+Status
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery.status %>
+    </dd>
+    <dt>
+<span class="decimal_type label label-info prize_amount_field">
+Prize amount
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery.prize_amount %>
+    </dd>
+
+    <dt>
+<span class="bitcoin_address_field label label-info string_type">
+Bitcoin address
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery.bitcoin_address %>
+    </dd>
+
+    <dt>
+<span class="QR_code_field label label-info string_type">
+QR-code
+</span>
+    </dt>
+    <dd class="well">
+      <img src=<%=@lottery.qr_code%>>
+    </dd>
+
+    <dt>
+<span class="datetime_type ends_at_field label label-info">
+Ends at
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery.ends_at %>
+    </dd>
+    <dt>
+<span class="entries_field has_many_association_type label label-info">
+Winner
+</span>
+    </dt>
+    <dd class="well">
+      <%= link_to @lottery.winner_entry, lottery_entry_path(@lottery.winner_entry) unless @lottery.winner_entry.blank? %><%=  %>
+    </dd>
+  </dl>
+</div>
+</div>
+
