@@ -1,33 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="fieldset">
+  <h2>
+    <strong>Lottery Entry #<%= @lottery_entry.id %></strong>
+  </h2>
 
-<p>
-  <strong>Lottery Id:</strong>
-  <%= link_to @lottery_entry.lottery_id, lottery_path(@lottery_entry.lottery_id) %>
-</p>
 
-<p>
-  <strong>Transaction id:</strong>
-  <%= @lottery_entry.transaction_id %>
-</p>
 
-<p>
-  <strong>Bitcoin address:</strong>
-  <%= @lottery_entry.bitcoin_address %>
-</p>
 
-<p>
-  <strong>Amount paid:</strong>
-  <%= @lottery_entry.amount_charged %>
-</p>
+  <dl>
+    <dt>
+<span class="text_field label label-info string_type">
+Transaction id
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery_entry.transaction_id %>
+    </dd>
+    <dt>
+<span class="decimal_type label label-info prize_amount_field">
+Bitcoin address
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery_entry.bitcoin_address %>
+    </dd>
 
-<p>
-  <strong>User Id:</strong>
-  <%= @lottery_entry.user_id %>
-</p>
+    <dt>
+<span class="bitcoin_address_field label label-info string_type">
+Amount paid
+</span>
+    </dt>
+    <dd class="well">
+      <%= @lottery_entry.amount_charged %>
+    </dd>
 
-<p>
-  <strong>Created:</strong>
-  <%= @lottery_entry.created_at %>
-</p>
-
-<%= link_to 'Back', lottery_entries_path %>
+    <dt>
+<span class="QR_code_field label label-info string_type">
+Entered
+</span>
+    </dt>
+    <dd class="well">
+      <%=@lottery_entry.created_at%>
+    </dd>
+    </dl>
+</div>
