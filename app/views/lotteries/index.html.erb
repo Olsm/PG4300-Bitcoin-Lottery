@@ -1,4 +1,7 @@
 
+
+<%=render 'lotteries/modal'%>
+
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -21,10 +24,7 @@
         </tr>
         </thead>
         <tbody>
-        <%lottery = Array.new%>
         <% @lotteries.each do |l| %>
-            <%
-            lottery.push(l)%>
             <tr>
               <td data-title = "ID"><%= l.id %></td>
               <td data-title = "Status"><%= l.status %></td>
@@ -33,15 +33,11 @@
               <td data-title = "QR-code" class="qrcode"><img src=<%=l.qr_code%>></td>
               <td data-title = "Ends"><%= l.ends_at %></td>
               <td data-title = "Winner" ><%= link_to l.winner_entry, lottery_entry_path(l.winner_entry) if l.winner_entry %></td>
-              <td><a href="#myModal" data-toggle="modal" data-lottery-id=<%= l.id%> data-lottery-status=<%= l.status%> data-lottery-qr=<%= l.qr_code%> data-lottery-prize=<%= l.prize_amount%> data-lottery-address=<%= l.bitcoin_address%> data-lottery-ends=<%= l.ends_at%> data-lottery-winner=<%= l.winner_entry%> data-lottery-winner-link=<%=lottery_entry_path(l.winner_entry) unless l.winner_entry.blank?%> data-lottery-winner=<%=l.winner_entry unless l.winner_entry.blank?%> >Open Modal</a></td>
-
-
-
-
-
+              <td><button type="button" class="btn btn-info" data-dismiss="modal" data-target="#myModal" data-toggle="modal"  data-lottery-id=<%= l.id%> data-lottery-status=<%= l.status%> data-lottery-qr=<%= l.qr_code%>
+                  data-lottery-prize=<%= l.prize_amount%> data-lottery-address=<%= l.bitcoin_address%> data-lottery-ends=<%= l.ends_at%>
+                          data-lottery-winner-link=<%=lottery_entry_path(l.winner_entry) unless l.winner_entry.blank?%>
+                              data-lottery-winner=<%=l.winner_entry unless l.winner_entry.blank?%> >View lottery</button></td>
             </tr>
-
-
         <% end %>
         </tbody>
       </table>
@@ -50,85 +46,8 @@
 </div>
 
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "word-wrap:break-word;">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Lottery #</h4>
-      </div>
-      <div class="modal-body">
-        <div class="fieldset">
-
-          <h2>
-            <strong id = lotteryId>Lottery #</strong>
-          </h2>
-          <dl>
-            <dt>
-                              <span class="text_field label label-info string_type">
-                              Status
-                              </span>
-            </dt>
-            <dd class="well" >
-  <p id = "lotteryStatus"></p>
-            </dd>
-            <dt>
-                              <span class="decimal_type label label-info prize_amount_field">
-                              Prize amount
-                              </span>
-            </dt>
-            <dd class="well">
-              <p id = "lotteryPrize"></p>
-            </dd>
-
-            <dt>
-                            <span class="bitcoin_address_field label label-info string_type">
-                            Bitcoin address
-                            </span>
-            </dt>
-            <dd class="well" >
-              <p id = "lotteryAddress"></p>
-
-            </dd>
-
-            <dt>
-                            <span class="QR_code_field label label-info string_type">
-                            QR-code
-                            </span>
-            </dt>
-            <dd class="well">
-              <img id = "lotteryqr" src = >
 
 
-            </dd>
-
-            <dt>
-                            <span class="datetime_type ends_at_field label label-info">
-                            Ends at
-                            </span>
-            </dt>
-            <dd class="well">
-              <p id = "lotteryEnds"></p>
-            </dd>
-            <dt>
-                            <span class="entries_field has_many_association_type label label-info">
-                            Winner
-                            </span>
-            </dt>
-            <dd class="well" >
-              <a id = "lotteryWinnerLink" href =  ></a>
-
-            </dd>
-          </dl>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -159,4 +78,7 @@
       document.getElementById("lotteryWinnerLink").href = "";
     }
   });
+
+
+
 </script>
