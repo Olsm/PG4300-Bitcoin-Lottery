@@ -34,7 +34,7 @@
               <td data-title = "QR-code" class="qrcode"><img src=<%=l.qr_code%>></td>
               <td data-title = "Ends"><%= l.ends_at %></td>
               <td data-title = "Winner" ><%= link_to l.winner_entry, lottery_entry_path(l.winner_entry) if l.winner_entry %></td>
-              <td><a href="#myModal" data-toggle="modal" data-lottery-id=<%= l.id%> data-lottery-status=<%= l.status%> data-lottery-qr=<%= l.qr_code%> data-lottery-prize=<%= l.prize_amount%> data-lottery-address=<%= l.bitcoin_address%> data-lottery-ends=<%= l.ends_at%> data-lottery-winner=<%= l.winner_entry%>   >Open Modal</a></td>
+              <td><a href="#myModal" data-toggle="modal" data-lottery-id=<%= l.id%> data-lottery-status=<%= l.status%> data-lottery-qr=<%= l.qr_code%> data-lottery-prize=<%= l.prize_amount%> data-lottery-address=<%= l.bitcoin_address%> data-lottery-ends=<%= l.ends_at%> data-lottery-winner=<%= l.winner_entry%> data-lottery-winner-link=<%=lottery_entry_path(l.winner_entry) unless l.winner_entry.blank?%> data-lottery-winner=<%=l.winner_entry unless l.winner_entry.blank?%> >Open Modal</a></td>
 
 
 
@@ -49,11 +49,7 @@
     </div>
   </div>
 </div>
-<% @lotteries.each do |f| %>
 
-    <%= f.to_json%>
-<%end%>
-<% Lottery.all.each do |l| %>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "word-wrap:break-word;">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -90,7 +86,7 @@
                             Bitcoin address
                             </span>
             </dt>
-            <dd class="well">
+            <dd class="well" >
               <p id = "lotteryAddress"></p>
 
             </dd>
@@ -101,7 +97,7 @@
                             </span>
             </dt>
             <dd class="well">
-              <p id = "lotteryqr"></p>
+              <img id = "lotteryqr" src = >
 
 
             </dd>
@@ -119,8 +115,9 @@
                             Winner
                             </span>
             </dt>
-            <dd class="well">
-              <%= link_to l.winner_entry, lottery_entry_path(l.winner_entry) unless l.winner_entry.blank? %><%=  %>
+            <dd class="well" >
+              <a id = "lotteryWinnerLink" href =  ></a>
+
             </dd>
           </dl>
         </div>
@@ -132,7 +129,6 @@
     </div>
   </div>
 </div>
-<% end %>
 
 
 
@@ -140,16 +136,26 @@
 <script type="text/javascript">
   $('#myModal').on('show.bs.modal', function (e) {
     var myId = $(e.relatedTarget).data('lottery-id');
-    document.getElementById("lotteryId").innerHTML = myId.toString();
+    document.getElementById("lotteryId").innerHTML = "Lottery#" + myId.toString();
     var myStatus = $(e.relatedTarget).data('lottery-status');
     document.getElementById("lotteryStatus").innerHTML = myStatus.toString();
     var myQR = $(e.relatedTarget).data('lottery-qr');
-    document.getElementById("lotteryqr").innerHTML = myQR.toString();
+    document.getElementById("lotteryqr").src = myQR.toString();
     var myPrize = $(e.relatedTarget).data('lottery-prize');
     document.getElementById("lotteryPrize").innerHTML = myPrize.toString();
     var myAddress = $(e.relatedTarget).data('lottery-address');
     document.getElementById("lotteryAddress").innerHTML = myAddress.toString();
     var myEndTime = $(e.relatedTarget).data('lottery-ends');
     document.getElementById("lotteryEnds").innerHTML = myEndTime.toString();
+    var myWinner = $(e.relatedTarget).data('lottery-winner');
+    var myWinnerLink = $(e.relatedTarget).data('lottery-winner-link');
+    if(myWinner && myWinnerLink){
+      document.getElementById("lotteryWinnerLink").innerHTML = myWinner.toString();
+      document.getElementById("lotteryWinnerLink").href = myWinnerLink.toString();
+    }
+    else{
+      document.getElementById("lotteryWinnerLink").innerHTML = "";
+      document.getElementById("lotteryWinnerLink").href = "";
+    }
   });
 </script>
