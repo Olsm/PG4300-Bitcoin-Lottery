@@ -34,10 +34,8 @@
               <td data-title = "Ends"><%= l.ends_at %></td>
               <td data-title = "Winner" ><a id = "lotteryWinnerLink" data-target="#winnerModal" data-toggle="modal" data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%> href  ><%=l.winner_entry%></a>
               </td>
-              <td><button type="button" class="btn btn-info" data-dismiss="modal" data-target="#myModal" data-toggle="modal"  data-lottery-id=<%= l.id%> data-lottery-status=<%= l.status%> data-lottery-qr=<%= l.qr_code%>
-                  data-lottery-prize=<%= l.prize_amount%> data-lottery-address=<%= l.bitcoin_address%> data-lottery-ends=<%= l.ends_at%>
-                          data-lottery-winner-link=<%=lottery_entry_path(l.winner_entry) unless l.winner_entry.blank?%>
-                              data-lottery-winner=<%=l.winner_entry unless l.winner_entry.blank?%> data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%>  >View lottery</button></td>
+              <td><button type="button" class="btn btn-info" data-dismiss="modal" data-target="#myModal" data-toggle="modal" data-lottery-object = <%= l.to_json%>
+                  data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%>  >View lottery</button></td>
             </tr>
         <% end %>
         </tbody>
@@ -53,33 +51,30 @@
 
 <script type="text/javascript">
   $('#myModal').on('show.bs.modal', function (e) {
-    var myId = $(e.relatedTarget).data('lottery-id');
-    document.getElementById("lotteryId").innerHTML = "Lottery#" + myId.toString();
-    var myStatus = $(e.relatedTarget).data('lottery-status');
-    document.getElementById("lotteryStatus").innerHTML = myStatus.toString();
-    var myQR = $(e.relatedTarget).data('lottery-qr');
-    document.getElementById("lotteryqr").src = myQR.toString();
-    var myPrize = $(e.relatedTarget).data('lottery-prize');
-    document.getElementById("lotteryPrize").innerHTML = myPrize.toString();
-    var myAddress = $(e.relatedTarget).data('lottery-address');
-    document.getElementById("lotteryAddress").innerHTML = myAddress.toString();
-    var myEndTime = $(e.relatedTarget).data('lottery-ends');
-    document.getElementById("lotteryEnds").innerHTML = myEndTime.toString();
-    var myWinnerLink = $(e.relatedTarget).data('lottery-winner-link');
+    var myObject = $(e.relatedTarget).data('lottery-object');
     var myWinnerObject = $(e.relatedTarget).data('lottery-winner-object');
-    if(myWinnerObject && myWinnerLink){
-      document.getElementById("lotteryWinnerLink").innerHTML = myWinnerObject.id.toString();
-      document.getElementById("winnerId").innerHTML = myWinnerObject.id.toString();
-      document.getElementById("winnerTransactionId").innerHTML = myWinnerObject.transaction_id.toString();
-      document.getElementById("winnerAddress").innerHTML = myWinnerObject.bitcoin_address.toString();
-      document.getElementById("winnerAmountPaid").innerHTML = myWinnerObject.amount_charged.toString();
-      document.getElementById("winnerEntered").innerHTML = new Date(myWinnerObject.created_at);
+    if(myObject){
+      document.getElementById("lotteryId").innerHTML = "Lottery # "+myObject.id.toString();
+      document.getElementById("lotteryStatus").innerHTML = myObject.status.toString();
+      document.getElementById("lotteryPrize").innerHTML = myObject.prize_amount.toString();
+      document.getElementById("lotteryAddress").innerHTML = myObject.bitcoin_address.toString();
+      document.getElementById("lotteryqr").src = myObject.qr_code.toString();
+      document.getElementById("lotteryEnds").innerHTML = new Date(myObject.ends_at.toString());
 
+      if(myWinnerObject){
+        document.getElementById("lotteryWinnerLink").innerHTML = myWinnerObject.id.toString();
+        document.getElementById("winnerId").innerHTML = myWinnerObject.id.toString();
+        document.getElementById("winnerTransactionId").innerHTML = myWinnerObject.transaction_id.toString();
+        document.getElementById("winnerAddress").innerHTML = myWinnerObject.bitcoin_address.toString();
+        document.getElementById("winnerAmountPaid").innerHTML = myWinnerObject.amount_charged.toString();
+        document.getElementById("winnerEntered").innerHTML = new Date(myWinnerObject.created_at);
+      }
+      else{
+        document.getElementById("lotteryWinnerLink").innerHTML = "";
 
+      }
     }
-    else{
-      document.getElementById("lotteryWinnerLink").innerHTML = "";
-    }
+
   });
 
   $('#winnerModal').on('show.bs.modal', function (e) {
@@ -95,7 +90,6 @@
     }
 
   });
-
 
 
 </script>
