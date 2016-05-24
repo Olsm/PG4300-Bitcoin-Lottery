@@ -14,6 +14,7 @@ set :keep_releases, 5
 set :pty, true
 set :tmp_dir, "#{fetch(:home)}/tmp"
 set :normalize_asset_timestamps, false
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 server 'bitcoinlottery.immortaltools.com', user: 'deployer', roles: %w{web app db}
 
 # Default branch is :master
