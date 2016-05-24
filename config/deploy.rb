@@ -5,7 +5,6 @@ lock '3.5.0'
 
 set :application, 'bitcoinlottery'
 set :repo_url, 'git@github.com:Westerdals/PG4300-16-6-Bitcoin-Lottery.git'
-set :deploy_to, "bitcoinlottery"
 set :scm, :git
 set :branch, "test"
 set :use_sudo, false
