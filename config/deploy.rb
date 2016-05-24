@@ -14,8 +14,7 @@ set :keep_releases, 5
 set :pty, true
 set :tmp_dir, "#{fetch(:home)}/tmp"
 set :normalize_asset_timestamps, false
-set :ssh_options, { user: 'deployer', forward_agent: false }
-server 'bitcoinlottery.immortaltools.com'
+server 'bitcoinlottery.immortaltools.com', user: 'deployer', roles: %w{web app db}
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
