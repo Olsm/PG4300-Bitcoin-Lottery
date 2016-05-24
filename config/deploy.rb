@@ -49,15 +49,6 @@ server 'bitcoinlottery.immortaltools.com', user: 'deployer', roles: %w{web app d
 
 namespace :deploy do
 
-  after :publishing, :restart
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute "service thin restart"
-    end
-  end
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
