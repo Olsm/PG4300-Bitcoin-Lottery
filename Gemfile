@@ -11,6 +11,7 @@ gem 'block_io'
 gem 'pickup'
 gem 'whenever', :require => false
 gem 'nokogiri'
+gem 'thin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
