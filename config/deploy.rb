@@ -8,15 +8,15 @@ set :repo_url, 'git@github.com:Westerdals/PG4300-16-6-Bitcoin-Lottery.git'
 set :deploy_to, "bitcoinlottery"
 set :scm, :git
 set :branch, "test"
-set :scm_passphrase, "B1tc0inLott3ry"
 set :use_sudo, false
 set :rails_env, "production"
 set :deploy_via, :copy
 set :keep_releases, 5
 set :pty, true
-set :forward_agent, true
 set :tmp_dir, "#{fetch(:home)}/tmp"
-server 'bitcoinlottery.immortaltools.com', user: 'olav', roles: %w{web app db}, primary: true
+set :normalize_asset_timestamps, false
+set :ssh_options, { user: 'deployer', forward_agent: false }
+server 'bitcoinlottery.immortaltools.com'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
