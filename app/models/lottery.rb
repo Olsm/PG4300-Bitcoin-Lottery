@@ -24,6 +24,7 @@ class Lottery < ActiveRecord::Base
 
   def self.update_lotteries
     self.where.not(bitcoin_address: [nil, '']).each do |l|
+      l.update_prize
       l.update_entries if l.active?
       l.end unless l.active?
     end
@@ -31,8 +32,19 @@ class Lottery < ActiveRecord::Base
 
   def update_prize
     if active?
-      result = BlockIo.get_address_balance :addresses => bitcoin_address
-      balance = result['data']['available_balance']
+      # Only get transactions with at least 1 confirms
+      result = BlockIo.get_transactions :type => 'received', :addresses => bitcoin_address
+      transactions = result['data']['txs'] if result['status'] == "success"
+      transactions.keep_if {|t| t["confirmations"] > 0}
+
+      return prize_amount if transactions.blank?
+
+      # Sum all transaction amounts that had at least 1 confirm
+      balance = 0.0
+      transactions.each do |t|
+        balance += t['amounts_received'].map{|x| x["amount"].to_i}.inject(0){|sum,x| sum + x }
+      end
+
       update prize_amount: balance if prize_amount != balance.to_d
     end
     prize_amount
