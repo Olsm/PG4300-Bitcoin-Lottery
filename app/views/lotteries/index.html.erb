@@ -23,7 +23,7 @@
         </tr>
         </thead>
         <tbody>
-        <% @lotteries.each do |l| %>
+        <% @lotteries.reverse_each do |l| %>
 
             <tr>
               <td data-title = "ID"><%= l.id %></td>
