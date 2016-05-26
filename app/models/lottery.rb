@@ -4,12 +4,7 @@ class Lottery < ActiveRecord::Base
   has_and_belongs_to_many :fees, class_name: 'LotteryFee'
 
   after_create :add_default_fees
-
-  def add_default_fees
-    LotteryFee.where(default: true).each do |fee|
-      fees << fee
-    end
-  end
+  after_create :generate_bitcoin_address
 
   def active?
     ends_at > Time.current
@@ -79,6 +74,16 @@ class Lottery < ActiveRecord::Base
   end
 
   private
+
+  def add_default_fees
+    LotteryFee.where(default: true).each do |fee|
+      fees << fee unless fees.include? fee
+    end
+  end
+
+  def generate_bitcoin_address
+      self.bitcoin_address = BlockIo.get_new_address['data']['address'] if bitcoin_address.blank?
+  end
 
   def pick_winner
     key_func = Proc.new{ |item| item.id }
