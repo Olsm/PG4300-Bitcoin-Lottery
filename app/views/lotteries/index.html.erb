@@ -34,9 +34,10 @@
               <td data-title = "Ends"><%= l.ends_at %></td>
               <td data-title = "Winner" ><a id = "lotteryWinnerLink" data-target="#winnerModal" data-toggle="modal" data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%> href  ><%=l.winner_entry%></a>
               </td>
-              <td><button type="button" class="btn btn-info" data-dismiss="modal" data-target="#myModal" data-toggle="modal" data-lottery-object = <%= l.to_json%>
-                  data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%>  >View lottery</button></td>
+              <td><button type="button" class="btn btn-info" data-dismiss="modal" data-target="#myModal" data-toggle="modal" data-lottery-object=<%= l.to_json%> data-lottery-qrcode= <%= l.qr_code%> data-lottery-status = <%= l.status%>
+                  data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%> >View lottery</button></td>
             </tr>
+
         <% end %>
         </tbody>
       </table>
@@ -53,12 +54,16 @@
   $('#myModal').on('show.bs.modal', function (e) {
     var myObject = $(e.relatedTarget).data('lottery-object');
     var myWinnerObject = $(e.relatedTarget).data('lottery-winner-object');
+    var status = $(e.relatedTarget).data('lottery-status');
+    var qrCode = $(e.relatedTarget).data('lottery-qrcode');
+
+
     if(myObject){
       document.getElementById("lotteryId").innerHTML = "Lottery # "+myObject.id.toString();
-      document.getElementById("lotteryStatus").innerHTML = myObject.status.toString();
       document.getElementById("lotteryPrize").innerHTML = myObject.prize_amount.toString();
+      document.getElementById("lotteryqr").src = qrCode.toString();
       document.getElementById("lotteryAddress").innerHTML = myObject.bitcoin_address.toString();
-      document.getElementById("lotteryqr").src = myObject.qr_code.toString();
+      document.getElementById("lotteryStatus").innerHTML = status.toString();
       document.getElementById("lotteryEnds").innerHTML = new Date(myObject.ends_at.toString());
 
       if(myWinnerObject){
