@@ -3,8 +3,8 @@ class Lottery < ActiveRecord::Base
   has_many :entries, class_name: 'LotteryEntry'
   has_and_belongs_to_many :fees, class_name: 'LotteryFee'
 
-  after_create :add_default_fees
-  after_create :generate_bitcoin_address
+  before_create :generate_bitcoin_address
+  before_create :add_default_fees
 
   def active?
     ends_at > Time.current
