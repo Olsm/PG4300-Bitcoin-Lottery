@@ -1,5 +1,4 @@
 
-
 <%=render 'lotteries/modal'%>
 
 <div class="container">
@@ -24,7 +23,7 @@
         </tr>
         </thead>
         <tbody>
-        <% @lotteries.each do |l| %>
+        <% @lotteries.reverse_each do |l| %>
 
             <tr>
               <td data-title = "ID"><%= l.id %></td>
@@ -51,15 +50,13 @@
 
 
 
-
-
-
 <script type="text/javascript">
   $('#myModal').on('show.bs.modal', function (e) {
     var myObject = $(e.relatedTarget).data('lottery-object');
     var myWinnerObject = $(e.relatedTarget).data('lottery-winner-object');
     var status = $(e.relatedTarget).data('lottery-status');
     var qrCode = $(e.relatedTarget).data('lottery-qrcode');
+
 
 
     if(myObject){
@@ -71,6 +68,7 @@
       document.getElementById("lotteryEnds").innerHTML = new Date(myObject.ends_at.toString());
 
       if(myWinnerObject){
+        document.getElementById("lotteryTransactionId").innerHTML = myObject.transaction_id.toString();
         document.getElementById("lotteryWinnerLink").innerHTML = myWinnerObject.id.toString();
         document.getElementById("winnerId").innerHTML = myWinnerObject.id.toString();
         document.getElementById("winnerTransactionId").innerHTML = myWinnerObject.transaction_id.toString();
@@ -102,4 +100,3 @@
 
 
 </script>
-
