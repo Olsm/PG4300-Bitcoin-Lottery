@@ -1,7 +1,15 @@
 require 'test_helper'
 
 class LotteryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  @l
+
+  Before
+  def setup
+    self.l = fixtures.lotteries.one
+  end
+
+  test "status" do
+    assertEquals("Active", l.status)
+
+  end
 end
