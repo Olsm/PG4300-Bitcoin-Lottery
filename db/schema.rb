@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-
 ActiveRecord::Schema.define(version: 20160526192042) do
-
 
   create_table "lotteries", force: :cascade do |t|
     t.decimal  "prize_amount",    default: 0.0, null: false
