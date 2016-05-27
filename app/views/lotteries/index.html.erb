@@ -58,6 +58,7 @@
     var qrCode = $(e.relatedTarget).data('lottery-qrcode');
 
 
+
     if(myObject){
       document.getElementById("lotteryId").innerHTML = "Lottery # "+myObject.id.toString();
       document.getElementById("lotteryPrize").innerHTML = myObject.prize_amount.toString();
@@ -67,6 +68,7 @@
       document.getElementById("lotteryEnds").innerHTML = new Date(myObject.ends_at.toString());
 
       if(myWinnerObject){
+        document.getElementById("lotteryTransactionId").innerHTML = myObject.transaction_id.toString();
         document.getElementById("lotteryWinnerLink").innerHTML = myWinnerObject.id.toString();
         document.getElementById("winnerId").innerHTML = myWinnerObject.id.toString();
         document.getElementById("winnerTransactionId").innerHTML = myWinnerObject.transaction_id.toString();
