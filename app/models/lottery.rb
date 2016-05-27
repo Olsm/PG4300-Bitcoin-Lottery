@@ -70,7 +70,7 @@ class Lottery < ActiveRecord::Base
   end
 
   def qr_code
-    "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=#{bitcoin_address}"
+    "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:#{bitcoin_address}"
   end
 
   private
