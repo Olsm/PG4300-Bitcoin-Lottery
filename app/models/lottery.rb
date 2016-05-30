@@ -66,7 +66,8 @@ class Lottery < ActiveRecord::Base
   def end
     update winner_entry: pick_winner if winner_entry.blank?
     update transaction_id: "none" if winner_entry.nil?
-    send_prize if transaction_id.blank?
+    available_balance = (BlockIo.get_address_balance :addresses => bitcoin_address)['data']['available_balance'].to_d
+    send_prize if transaction_id.blank? and  available_balance >= prize_amount
     winner_entry
   end
 
