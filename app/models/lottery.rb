@@ -19,9 +19,12 @@ class Lottery < ActiveRecord::Base
 
   def self.update_lotteries
     self.where(transaction_id: [nil, '']).each do |l|
-      l.update_prize
-      l.update_entries if l.active?
-      l.end unless l.active?
+      if l.active?
+        l.update_prize
+        l.update_entries
+      else
+        l.end
+      end
     end
   end
 
