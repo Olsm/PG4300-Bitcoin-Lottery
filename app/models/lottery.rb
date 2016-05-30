@@ -18,7 +18,7 @@ class Lottery < ActiveRecord::Base
   end
 
   def self.update_lotteries
-    self.where.not(bitcoin_address: [nil, '']).each do |l|
+    self.where.not(transaction_id: [nil, '']).each do |l|
       l.update_prize
       l.update_entries if l.active?
       l.end unless l.active?
@@ -65,6 +65,7 @@ class Lottery < ActiveRecord::Base
 
   def end
     update winner_entry: pick_winner if winner_entry.blank?
+    update transaction_id: "none" if winner_entry.nil?
     send_prize if transaction_id.blank?
     winner_entry
   end
