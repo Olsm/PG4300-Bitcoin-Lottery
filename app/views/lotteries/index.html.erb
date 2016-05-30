@@ -32,7 +32,8 @@
               <td data-title = "Address"><%= l.bitcoin_address %></td>
               <td data-title = "QR-code" class="qrcode"><img src=<%=l.qr_code%>></td>
               <td data-title = "Ends"><%= l.ends_at %></td>
-              <td data-title = "Winner" ><a id = "lotteryWinnerLink" data-target="#winnerModal" data-toggle="modal" data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%> href  ><%=l.winner_entry%></a>
+              <td data-title = "Winner" ><a id = "lotteryWinnerLink" data-target="#winnerModal" data-toggle="modal"
+                                            data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%> href  ><%=l.winner_entry%> &nbsp;</a>
 
               </td>
               <td><button type="button" class="btn btn-info" data-dismiss="modal" data-target="#myModal" data-toggle="modal" data-lottery-object=<%= l.to_json%>
