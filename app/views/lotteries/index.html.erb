@@ -35,8 +35,9 @@
               <td data-title = "Winner" ><a id = "lotteryWinnerLink" data-target="#winnerModal" data-toggle="modal" data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%> href  ><%=l.winner_entry%></a>
 
               </td>
-              <td><button type="button" class="btn btn-info" data-dismiss="modal" data-target="#myModal" data-toggle="modal" data-lottery-object=<%= l.to_json%> data-lottery-qrcode= <%= l.qr_code%> data-lottery-status = <%= l.status%>
-                  data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%> >View lottery</button></td>
+              <td><button type="button" class="btn btn-info" data-dismiss="modal" data-target="#myModal" data-toggle="modal" data-lottery-object=<%= l.to_json%>
+                  data-lottery-qrcode= <%= l.qr_code%> data-lottery-status= <%= l.status%>
+                  data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%>  >View lottery</button></td>
             </tr>
 
         <% end %>
@@ -57,7 +58,8 @@
     var myWinnerObject = $(e.relatedTarget).data('lottery-winner-object');
     var status = $(e.relatedTarget).data('lottery-status');
     var qrCode = $(e.relatedTarget).data('lottery-qrcode');
-    
+
+
     if(myObject){
       document.getElementById("lotteryId").innerHTML = "Lottery # "+myObject.id.toString();
       document.getElementById("lotteryPrize").innerHTML = myObject.prize_amount.toString();
@@ -65,9 +67,10 @@
       document.getElementById("lotteryAddress").innerHTML = myObject.bitcoin_address.toString();
       document.getElementById("lotteryStatus").innerHTML = status.toString();
       document.getElementById("lotteryEnds").innerHTML = new Date(myObject.ends_at.toString());
+      document.getElementById("lotteryTransactionId").innerHTML = myObject.transaction_id.toString();
+
 
       if(myWinnerObject){
-        document.getElementById("lotteryTransactionId").innerHTML = myObject.transaction_id.toString();
         document.getElementById("lotteryWinnerLink").innerHTML = myWinnerObject.id.toString();
         document.getElementById("winnerId").innerHTML = myWinnerObject.id.toString();
         document.getElementById("winnerTransactionId").innerHTML = myWinnerObject.transaction_id.toString();
@@ -77,7 +80,6 @@
       }
       else{
         document.getElementById("lotteryWinnerLink").innerHTML = "";
-        document.getElementById("lotteryTransactionId").innerHTML = "";
 
 
       }
