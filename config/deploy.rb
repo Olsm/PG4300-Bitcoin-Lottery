@@ -50,7 +50,7 @@ server 'bitcoinlottery.immortaltools.com', user: 'deployer', roles: %w{web app d
 
 namespace :deploy do
 
-  after :restart, :add_x_bin_rails_permission do
+  after :publishing, :x_bin_rails do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
         execute :chmod, "u+x bin/rails"
