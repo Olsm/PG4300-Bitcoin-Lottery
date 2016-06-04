@@ -1,31 +1,107 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Lotteries</h1>
+<%=render 'lotteries/modal'%>
 
-<table>
-  <thead>
-    <tr>
-      <th>Lottery</th>
-      <th>Prize amount</th>
-      <th>Bitcoin address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">
+        Lotteries
+      </h1>
+    </div>
+    <div id="no-more-tables">
+      <table class="col-md-12 table-bordered table-striped table-condensed cf" style = "word-wrap:break-word;">
+        <thead class="cf">
+        <tr>
+          <th>Id</th>
+          <th>Status</th>
+          <th>Prize</th>
+          <th>Address</th>
+          <th>QR-code</th>
+          <th>Ends</th>
+          <th>Winner</th>
+          <th>View lottery</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @lotteries.reverse_each do |l| %>
 
-  <tbody>
-    <% @lotteries.each do |lottery| %>
-      <tr>
-        <td><%= lottery.id %></td>
-        <td><%= lottery.prize_amount %></td>
-        <td><%= lottery.bitcoin_address %></td>
-        <td><%= link_to 'Show', lottery %></td>
-        <td><%= link_to 'Edit', edit_lottery_path(lottery) %></td>
-        <td><%= link_to 'Destroy', lottery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <tr>
+              <td data-title = "ID"><%= l.id %></td>
+              <td data-title = "Status"><%= l.status %></td>
+              <td data-title = "Prize"><%= l.prize_amount %></td>
+              <td data-title = "Address"><%= l.bitcoin_address %></td>
+              <td data-title = "QR-code" class="qrcode"><img src=<%=l.qr_code%>></td>
+              <td data-title = "Ends"><%= l.ends_at %></td>
+              <td data-title = "Winner" ><a id = "lotteryWinnerLink" data-target="#winnerModal" data-toggle="modal"
+                                            data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%> href  ><%=l.winner_entry%> &nbsp;</a>
 
-<br>
+              </td>
+              <td><button type="button" class="btn btn-info" data-dismiss="modal" data-target="#myModal" data-toggle="modal" data-lottery-object=<%= l.to_json%>
+                  data-lottery-qrcode= <%= l.qr_code%> data-lottery-status= <%= l.status%>
+                  data-lottery-winner-object=<%= LotteryEntry.find(l.winner_entry).to_json unless l.winner_entry.blank?%>  >View lottery</button></td>
+            </tr>
 
-<%= link_to 'New Lottery', new_lottery_path %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+  $('#myModal').on('show.bs.modal', function (e) {
+    var myObject = $(e.relatedTarget).data('lottery-object');
+    var myWinnerObject = $(e.relatedTarget).data('lottery-winner-object');
+    var status = $(e.relatedTarget).data('lottery-status');
+    var qrCode = $(e.relatedTarget).data('lottery-qrcode');
+
+
+    if(myObject){
+      document.getElementById("lotteryId").innerHTML = "Lottery # "+myObject.id.toString();
+      document.getElementById("lotteryPrize").innerHTML = myObject.prize_amount.toString();
+      document.getElementById("lotteryqr").src = qrCode.toString();
+      document.getElementById("lotteryAddress").innerHTML = myObject.bitcoin_address.toString();
+      document.getElementById("lotteryStatus").innerHTML = status.toString();
+      document.getElementById("lotteryEnds").innerHTML = new Date(myObject.ends_at.toString());
+      document.getElementById("lotteryTransactionId").innerHTML = myObject.transaction_id.toString();
+
+
+      if(myWinnerObject){
+        document.getElementById("lotteryWinnerLink").innerHTML = myWinnerObject.id.toString();
+        document.getElementById("winnerId").innerHTML = myWinnerObject.id.toString();
+        document.getElementById("winnerTransactionId").innerHTML = myWinnerObject.transaction_id.toString();
+        document.getElementById("winnerAddress").innerHTML = myWinnerObject.bitcoin_address.toString();
+        document.getElementById("winnerAmountPaid").innerHTML = myWinnerObject.amount_charged.toString();
+        document.getElementById("winnerEntered").innerHTML = new Date(myWinnerObject.created_at);
+      }
+      else{
+        document.getElementById("lotteryWinnerLink").innerHTML = "";
+
+
+      }
+    }
+
+  });
+
+  $('#winnerModal').on('show.bs.modal', function (e) {
+
+    var myObject = $(e.relatedTarget).data('lottery-winner-object');
+    if(myObject){
+      document.getElementById("lotteryWinnerLink").innerHTML = myObject.id.toString();
+      document.getElementById("winnerId").innerHTML = myObject.id.toString();
+      document.getElementById("winnerTransactionId").innerHTML = myObject.transaction_id.toString();
+      document.getElementById("winnerAddress").innerHTML = myObject.bitcoin_address.toString();
+      document.getElementById("winnerAmountPaid").innerHTML = myObject.amount_charged.toString();
+      document.getElementById("winnerEntered").innerHTML = new Date(myObject.created_at);
+    }
+
+  });
+
+
+
+</script>

@@ -10,6 +10,12 @@ class LotteriesController < ApplicationController
   # GET /lotteries/1
   # GET /lotteries/1.json
   def show
+    @lottery = Lottery.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+      format.json { render json: @lottery }
+    end
   end
 
   # GET /lotteries/new
