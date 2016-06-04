@@ -1,52 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Id:</strong>
-  <%= @lottery.id %>
+  <strong>Lottery:</strong>
+  <%= @lottery.lottery_id %>
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @lottery.status %>
-</p>
-
-<p>
-  <strong>Prize:</strong>
+  <strong>Prize amount:</strong>
   <%= @lottery.prize_amount %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>User:</strong>
+  <%= @lottery.user_id %>
+</p>
+
+<p>
+  <strong>Bitcoin address:</strong>
   <%= @lottery.bitcoin_address %>
 </p>
 
-<p>
-  <img src=<%=@lottery.qr_code%>>
-</p>
-
-<p>
-  <strong>Ends:</strong>
-  <%= @lottery.ends_at %>
-</p>
-
-<p>
-  <strong>Winner:</strong>
-  <%= link_to @lottery.winner_entry, lottery_entry_path(@lottery.winner_entry) unless @lottery.winner_entry.blank? %><%=  %>
-</p>
-
-<p>
-  <strong>Transaction Id:</strong>
-  <%= @lottery.transaction_id %>
-</p>
-
-<p>
-  <strong>Created:</strong>
-  <%= @lottery.created_at %>
-</p>
-
-<p>
-  <strong>Updated:</strong>
-  <%= @lottery.updated_at %>
-</p>
-
+<%= link_to 'Edit', edit_lottery_path(@lottery) %> |
 <%= link_to 'Back', lotteries_path %>

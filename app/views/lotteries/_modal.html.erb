@@ -1,0 +1,128 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "word-wrap:break-word;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="lotteryId">Lottery #</h2>
+      </div>
+      <div class="modal-body">
+        <div class="fieldset">
+
+          <dl>
+            <dt>
+                              <span class="text_field label label-info string_type">
+                              Status
+                              </span>
+            </dt>
+            <dd id = "lotteryStatus" class="well" >
+            </dd>
+            <dt>
+                              <span class="decimal_type label label-info prize_amount_field">
+                              Prize amount
+                              </span>
+            </dt>
+            <dd id = "lotteryPrize" class="well">
+            </dd>
+
+            <dt>
+                            <span class="bitcoin_address_field label label-info string_type">
+                            Bitcoin address
+                            </span>
+            </dt>
+            <dd id = "lotteryAddress" class="well" >
+
+            </dd>
+
+            <dt>
+                            <span class="QR_code_field label label-info string_type">
+                            QR-code
+                            </span>
+            </dt>
+            <dd class="well">
+              <img id = "lotteryqr" src = >
+
+
+            </dd>
+
+            <dt>
+                            <span class="datetime_type ends_at_field label label-info">
+                            Ends at
+                            </span>
+            </dt>
+            <dd id = "lotteryEnds" class="well">
+            </dd>
+            <dt>
+                            <span class="entries_field has_many_association_type label label-info">
+                            Winner
+                            </span>
+            </dt>
+            <dd class="well" >
+              <a id = "lotteryWinnerLink" data-target="#winnerModal" data-toggle="modal"  href =  ></a>
+
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade"  id="winnerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "word-wrap:break-word;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="winnerId"></h2>
+      </div>
+      <div class="modal-body">
+        <div class="fieldset">
+
+          <dl>
+            <dt>
+                              <span class="text_field label label-info string_type">
+                              TransactionId
+                              </span>
+            </dt>
+            <dd id = "winnerTransactionId" class="well" >
+            </dd>
+            <dt>
+                              <span class="decimal_type label label-info prize_amount_field">
+                              Bitcoin address
+                              </span>
+            </dt>
+            <dd id = "winnerAddress" class="well">
+            </dd>
+
+            <dt>
+                            <span class="bitcoin_address_field label label-info string_type">
+                             Amount paid
+                            </span>
+            </dt>
+            <dd id = "winnerAmountPaid" class="well" >
+
+            </dd>
+
+            <dt>
+                            <span class="_field label label-info string_type">
+                            Entered
+                            </span>
+            </dt>
+            <dd id = "winnerEntered" class="well" >
+
+            </dd>
+
+
+
+          </dl>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

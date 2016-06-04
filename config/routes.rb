@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  get 'static_pages/about'
+
+  get 'static_pages/faq'
+
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :lotteries
   resources :lottery_entries
@@ -7,12 +14,13 @@ Rails.application.routes.draw do
 
   match '/contact', to: 'contacts#new', via: 'get'
   resources :contacts, only: [:new, :create]
-
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'lotteries#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
