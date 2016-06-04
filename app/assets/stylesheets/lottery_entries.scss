@@ -1,7 +1,10 @@
 // Place all the styles related to the LotteryEntries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@media only screen and (max-width: 1100px) {
+
+
+
+@media only screen and (max-width: 800px) {
 
   /* Force table to not be like tables anymore */
   #no-more-tables table,
@@ -49,48 +52,4 @@
   Label the data
   */
   #no-more-tables td:before { content: attr(data-title); }
-}
-
-
-
-
-
-
-
-.cls
-
-
-
-* {
-  box-sizing: border-box;
-}
-
-div {
-  display: block;
-}
-
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333333;
-  background-color: #fff;
-}
-
-html {
-  font-size: 10px;
-  -webkit-tap-highlight-color: transparent;
-}
-html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-*:before, *:after {
-  box-sizing: border-box;
-}
-
-*:before, *:after {
-  box-sizing: border-box;
 }
