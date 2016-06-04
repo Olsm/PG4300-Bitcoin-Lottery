@@ -10,6 +10,8 @@ gem "omniauth-google-oauth2"
 gem 'block_io'
 gem 'pickup'
 gem 'whenever', :require => false
+gem 'nokogiri'
+gem 'thin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -45,9 +47,6 @@ gem 'font-awesome-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 group :test do
   gem 'cucumber-rails', require: false
   gem 'capybara-rails'
@@ -56,11 +55,14 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'capistrano-ssh-doctor', '~> 1.0'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  # Use Capistrano for deployment
+  gem 'capistrano-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
