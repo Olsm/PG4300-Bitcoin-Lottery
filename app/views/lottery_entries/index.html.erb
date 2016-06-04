@@ -1,31 +1,27 @@
 <p id="notice"><%= notice %></p>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="text-center">
-        Lotteries
-      </h1>
-    </div>
-    <div id="no-more-tables">
-      <table class="col-md-12 table-bordered table-striped table-condensed cf" style = "word-wrap:break-word;">
-        <thead class="cf">
-        <tr>
-          <th>Lottery</th>
-          <th>Paid</th>
-          <th>Transaction Id</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @lottery_entries.each do |l| %>
-            <tr>
-              <td data-title = "Lottery" td style="height:50px"><%= link_to l.lottery_id, lottery_path(l.lottery) %></td>
-              <td data-title = "Paid"  td style="height:50px"><%= l.amount_charged %></td>
-              <td data-title = "Transaction Id" td style="width:50%; height:50px"><%= l.transaction_id %></td>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
 
+<h1>Listing Lottery Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lottery</th>
+      <th>Paid</th>
+      <th>Transaction Id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lottery_entries.each do |le| %>
+      <tr>
+        <td><%= link_to le.lottery_id, lotteries_path(le.lottery) %></td>
+        <td><%= le.amount_charged %></td>
+        <td><%= le.transaction_id %></td>
+        <td><%= link_to 'Show', le %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
