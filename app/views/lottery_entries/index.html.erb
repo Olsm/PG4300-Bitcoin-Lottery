@@ -5,27 +5,23 @@
 <table>
   <thead>
     <tr>
-      <th>Email</th>
-      <th>Bitcoin address</th>
-      <th>Amount charged</th>
+      <th>Lottery</th>
+      <th>Paid</th>
+      <th>Transaction Id</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @lottery_entries.each do |lottery_entry| %>
+    <% @lottery_entries.each do |le| %>
       <tr>
-        <td><%= lottery_entry.email %></td>
-        <td><%= lottery_entry.bitcoin_address %></td>
-        <td><%= lottery_entry.amount_charged %></td>
-        <td><%= link_to 'Show', lottery_entry %></td>
-        <td><%= link_to 'Edit', edit_lottery_entry_path(lottery_entry) %></td>
-        <td><%= link_to 'Destroy', lottery_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to le.lottery_id, lotteries_path(le.lottery) %></td>
+        <td><%= le.amount_charged %></td>
+        <td><%= le.transaction_id %></td>
+        <td><%= link_to 'Show', le %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Lottery entry', new_lottery_entry_path %>
