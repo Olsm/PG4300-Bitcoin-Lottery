@@ -40,7 +40,7 @@ class Lottery < ActiveRecord::Base
       # Sum all transaction amounts that had at least 1 confirm
       balance = 0.0
       transactions.each do |t|
-        balance += t['amounts_received'].map{|x| x["amount"].to_i}.inject(0){|sum,x| sum + x }
+        balance += t['amounts_received'].map{|x| x["amount"].to_d}.inject(0){|sum,x| sum + x }
       end
 
       update prize_amount: balance if prize_amount != balance.to_d
