@@ -71,8 +71,19 @@
       document.getElementById("lotteryLink").href = blockChainLink;
       document.getElementById("lotteryStatus").innerHTML = status.toString();
       document.getElementById("lotteryEnds").innerHTML = new Date(myObject.ends_at.toString());
-      document.getElementById("transactionLink").innerHTML = myObject.transaction_id.toString();
-      document.getElementById("transactionLink").href = blockTransactionLink;
+      if(myObject.transaction_id == "none") {
+        document.getElementById("transactionLink").innerHTML = "";
+        document.getElementById("transactionLink").href = "";
+        document.getElementById("none").innerHTML = myObject.transaction_id;
+      }
+      else{
+        document.getElementById("none").innerHTML = "";
+        document.getElementById("transactionLink").innerHTML = myObject.transaction_id.toString();
+        document.getElementById("transactionLink").href = blockTransactionLink;
+      }
+
+
+
 
 
       if(myWinnerObject){
