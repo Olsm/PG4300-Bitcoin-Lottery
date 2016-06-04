@@ -50,12 +50,11 @@ server 'bitcoinlottery.immortaltools.com', user: 'deployer', roles: %w{web app d
 
 namespace :deploy do
 
-  after :restart, :clear_cache do
+  after :restart, :add_x_bin_rails_permission do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+      within release_path do
+        execute :chmod, "u+x bin/rails"
+      end
     end
   end
 
