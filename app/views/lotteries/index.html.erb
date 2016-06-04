@@ -59,19 +59,24 @@
     var myWinnerObject = $(e.relatedTarget).data('lottery-winner-object');
     var status = $(e.relatedTarget).data('lottery-status');
     var qrCode = $(e.relatedTarget).data('lottery-qrcode');
+    var blockChainLink = "https://blockchain.info/address/" + myObject.bitcoin_address.toString();
+    var blockTransactionLink = "https://blockchain.info/tx/" + myObject.transaction_id.toString();
 
 
     if(myObject){
       document.getElementById("lotteryId").innerHTML = "Lottery # "+myObject.id.toString();
       document.getElementById("lotteryPrize").innerHTML = myObject.prize_amount.toString();
       document.getElementById("lotteryqr").src = qrCode.toString();
-      document.getElementById("lotteryAddress").innerHTML = myObject.bitcoin_address.toString();
+      document.getElementById("lotteryLink").innerHTML = myObject.bitcoin_address.toString();
+      document.getElementById("lotteryLink").href = blockChainLink;
       document.getElementById("lotteryStatus").innerHTML = status.toString();
       document.getElementById("lotteryEnds").innerHTML = new Date(myObject.ends_at.toString());
-      document.getElementById("lotteryTransactionId").innerHTML = myObject.transaction_id.toString();
+      document.getElementById("transactionLink").innerHTML = myObject.transaction_id.toString();
+      document.getElementById("transactionLink").href = blockTransactionLink;
 
 
       if(myWinnerObject){
+
         document.getElementById("lotteryWinnerLink").innerHTML = myWinnerObject.id.toString();
         document.getElementById("winnerId").innerHTML = myWinnerObject.id.toString();
         document.getElementById("winnerTransactionId").innerHTML = myWinnerObject.transaction_id.toString();
