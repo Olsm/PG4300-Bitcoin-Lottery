@@ -7,7 +7,7 @@
 
 <p>
   <strong>Bitcoin address:</strong>
-  <%= @lottery_entry.bitcoin_address %>
+  <%= link_to @lottery_entry.bitcoin_address, "https://blockchain.info/address/" + @lottery_entry.bitcoin_address %>
 </p>
 
 <p>

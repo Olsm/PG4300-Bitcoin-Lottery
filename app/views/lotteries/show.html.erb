@@ -35,6 +35,15 @@
       <dd class="well">
         <%= @lottery.bitcoin_address %>
       </dd>
+<p>
+  <strong>User:</strong>
+  <%= @lottery.user_id %>
+</p>
+
+<p>
+  <strong>Bitcoin address:</strong>
+  <%= link_to @lottery.bitcoin_address, "https://blockchain.info/address/" + @lottery.bitcoin_address %>
+</p>
 
       <dt>
   <span class="QR_code_field label label-info string_type">

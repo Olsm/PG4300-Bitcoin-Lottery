@@ -29,7 +29,7 @@
               <td data-title = "ID"><%= l.id %></td>
               <td data-title = "Status"><%= l.status %></td>
               <td data-title = "Prize"><%= l.prize_amount %></td>
-              <td data-title = "Address"><%= l.bitcoin_address %></td>
+              <td data-title = "Address"><%= link_to l.bitcoin_address, "https://blockchain.info/address/" + l.bitcoin_address %></td>
               <td data-title = "QR-code" class="qrcode"><img src=<%=l.qr_code%>></td>
               <td data-title = "Ends"><%= l.ends_at %></td>
               <td data-title = "Winner" ><a id = "lotteryWinnerLink" data-target="#winnerModal" data-toggle="modal"
