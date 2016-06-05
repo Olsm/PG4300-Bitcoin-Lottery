@@ -90,6 +90,12 @@ As of now, by the help of the Devise gem, we have managed to develop a good regi
 ##### More cryptocurrencies
 As of now users can only use Bitcoin to join the lottery, and although they can use services like ShapeShift, we want to add support for other cryptocurrencies, such as Litecoin, Dogecoin, and Ethereum.
 
+##### Tests
+Tests of models are missing
+Tests of most features with cucumber are missing
+There should be more features and scenarios to user stories
+
+For other limitations you may see issues on the github repository
 
 ## Tests
 
