@@ -1,6 +1,5 @@
 
 <%=render 'lotteries/modal'%>
-<%= paginate @lotteries %>
 
 <div class="container">
   <div class="row">
@@ -45,6 +44,8 @@
         <% end %>
         </tbody>
       </table>
+      <%= paginate @lotteries %>
+
     </div>
   </div>
 </div>
