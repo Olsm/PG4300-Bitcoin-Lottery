@@ -1,3 +1,4 @@
+<% staticPage = StaticPage.new %>
 
 <!-- Page Content -->
 <div class="container">
@@ -10,90 +11,33 @@
       </h1>
     </div>
 
+    <%= staticPage.getAbout 'glyphicon glyphicon-ok', 'Automated lottery', 'View lotteries', root_path,
+                            'Our systems are fully automated. This means you never have to worry about the entry or payout!
+                            Winners and participants are published to ensure legitimacy.' %>
 
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4><i class="glyphicon glyphicon-ok"></i> Automated lottery</h4>
-        </div>
-        <div class="panel-body">
-          <p>Our systems are fully automated. This means you never have to worry about the entry or payout! Winners and participants are published to ensure legitimacy.  </p>
-          <%= link_to "View lotteries", root_path, class:"btn btn-default"%>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4><i class="fa fa-fw fa-lock"></i> Secure &amp; Open Source</h4>
-        </div>
-        <div class="panel-body">
-          <p>The Bitcoin Lottery-team wants to ensure our users that our systems are legitimate and fair.
-            To confirm this, we decided to make the project open-source. Click the button below to
-            view the project in its entirety</p>
-          <%= link_to "GitHub", "https://github.com/Westerdals/PG4300-16-6-Bitcoin-Lottery", class:"btn btn-default"%>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4><i class="fa fa-user-secret"></i> Anonymity</h4>
-        </div>
-        <div class="panel-body">
-          <p>The whole purpose of this project was to ensure an extra layer of anonymity to the user. We achieve this by
-            the use of decentralized cryptocurrencies. </p>
-          <%= link_to "Learn more about Bitcoin", "https://www.bitcoin.com/", class:"btn btn-default"%>
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getAbout 'fa fa-fw fa-lock', 'Secure &amp; Open Source', 'GitHub', 'https://github.com/Westerdals/PG4300-16-6-Bitcoin-Lottery',
+                          'The Bitcoin Lottery-team wants to ensure our users that our systems are legitimate and fair.
+                          To confirm this, we decided to make the project open-source. Click the button below to
+                          view the project in its entirety' %>
 
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4><i class="glyphicon glyphicon-tint"></i> Helping out</h4>
-        </div>
-        <div class="panel-body">
-          <p>To support <strong>The Water Project</strong>, we decided to deduct a small fee of 1% of every lottery entry
-            for a good cause!</p>
-          <%= link_to "The Water Project", "https://thewaterproject.org/", class:"btn btn-default"%>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4><i class="glyphicon glyphicon-globe"></i> International</h4>
-        </div>
-        <div class="panel-body">
-          <p>Tired of the restrictions and the ridiculous lottery fees your country makes you pay and follow?
-          By the use of bitcoins there are virtually no restrictions, and the almost non-existant fee of 1% you pay is for a good cause!</p>
-          <%= link_to "View lotteries", root_path, class:"btn btn-default"%>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4><i class="glyphicon glyphicon-info-sign"></i> Information is transparent</h4>
-        </div>
-        <div class="panel-body">
-          <p>All transactions are available and visibile within the BlockChain.
-          This means you can see where all the money goes, and if the money actually goes to the winners and if we actually send the remainder
-          of fees to our charity</p>
-          <%= link_to "BlockChain", "https://blockchain.info/", class:"btn btn-default"%>
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getAbout 'fa fa-user-secret', 'Anonymity', 'Learn more about Bitcoin', 'https://www.bitcoin.com/',
+                            'The whole purpose of this project was to ensure an extra layer of anonymity to the user.
+                            We achieve this by the use of decentralized cryptocurrencies.' %>
 
+    <%= staticPage.getAbout 'glyphicon glyphicon-tint', 'Helping out', 'The Water Project', 'https://thewaterproject.org/',
+                            'To support <strong>The Water Project</strong>, we decided to deduct a small fee of 1% of
+                            every lottery entry for a good cause!' %>
 
+    <%= staticPage.getAbout 'glyphicon glyphicon-globe', 'International', 'View lotteries', root_path,
+                            'Tired of the restrictions and the ridiculous lottery fees your country makes you pay and follow?
+                            By the use of bitcoins there are virtually no restrictions,
+                            and the almost non-existant fee of 1% you pay is for a good cause!' %>
 
-    <!-- /.row -->
+    <%= staticPage.getAbout 'glyphicon glyphicon-info-sign', 'Information is transparent', 'BlockChain', 'https://blockchain.info/',
+                            'All transactions are available and visibile within the BlockChain.
+                            This means you can see where all the money goes, and if the money actually goes to the winners
+                            and if we actually send the remainder of fees to our charity' %>
 
-</div>
+  </div>
 </div>
 <!-- /.container -->
-
-</body>
-
-</html>
