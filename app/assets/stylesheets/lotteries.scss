@@ -26,7 +26,10 @@
   max-height: calc(100vh - 210px);
   overflow-y: auto;
 }
-
+.outer_lottery_show{
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+}
 @media only screen and (max-width: 800px) {
 
   /* Force table to not be like tables anymore */
@@ -76,3 +79,4 @@
   */
   #no-more-tables td:before { content: attr(data-title); }
 }
+
