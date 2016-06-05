@@ -1,190 +1,75 @@
+<% staticPage = StaticPage.new %>
+
 <div class="container">
   <div class="panel-group" id="accordion">
 
     <div class="faqHeader">General</div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">What are the fees?</a>
-        </h4>
-      </div>
-      <div id="collapseOne" class="panel-collapse collapse">
-        <div class="panel-body">
-          1% fee is donated to <a href="https://thewaterproject.org/">The Water Project</a><br>
-          There is also the mandatory bitcoin transaction fee of 0.0001 BTC.<br>
-          These fees are deducted from the prize when sent to the winner.
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'What are the fees?',
+                          '1% fee is donated to <a href="https://thewaterproject.org/">The Water Project</a><br>
+                          There is also the mandatory bitcoin transaction fee of 0.0001 BTC.<br>
+                          These fees are deducted from the prize when sent to the winner.' %>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">What is the currency used for all lottery transactions?</a>
-        </h4>
-      </div>
-      <div id="collapseTwo" class="panel-collapse collapse">
-        <div class="panel-body">
-          All lottery transactions are made in Bitcoin. Click <a href="https://bitcoin.com/getting-started">here</a> to learn more
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'What is the currency used for all lottery transactions?',
+                          'All lottery transactions are made in Bitcoin. Click <a href="https://bitcoin.com/getting-started">here</a> to learn more' %>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Can I use other currencies than Bitcoin?</a>
-        </h4>
-      </div>
-      <div id="collapseThree" class="panel-collapse collapse">
-        <div class="panel-body">
-          Unfortunately, <strong>no</strong>. At this stage of the project we are only able to accept Bitcoins. <br>
-          You can use other services, like <strong><a href="https://shapeshift.io/">ShapeShift</a></strong> to quickly swap to other cryptocurrencies.
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'Can I use other currencies than Bitcoin?',
+                          'Unfortunately, <strong>no</strong>. At this stage of the project we are only able to accept Bitcoins. <br>
+                          You can use other services, like <strong><a href="https://shapeshift.io/">ShapeShift</a></strong> to quickly swap to other cryptocurrencies.' %>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Do I have to pay any taxes?</a>
-        </h4>
-      </div>
-      <div id="collapseFour" class="panel-collapse collapse">
-        <div class="panel-body">
-          The user is fully responsible for paying any taxes in his country on any prizes.
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'Do I have to pay any taxes?',
+                          'The user is fully responsible for paying any taxes in his country on any prizes.' %>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Is account registration required?</a>
-        </h4>
-      </div>
-      <div id="collapseFive" class="panel-collapse collapse">
-        <div class="panel-body">
-          Account registration at <strong>Bitcoin Lottery</strong> is <strong>not</strong> required. <br>
-          Registration will in the future consist of more functions and benefits. <br>
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'Is account registration required?',
+                          'Account registration at <strong>Bitcoin Lottery</strong> is <strong>not</strong> required. <br>
+                          Registration will in the future consist of more functions and benefits. <br>' %>
 
 
     <div class="faqHeader">Lottery Entry</div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">I want to join a lottery - what are the steps?</a>
-        </h4>
-      </div>
-      <div id="collapseSix" class="panel-collapse collapse">
-        <div class="panel-body">
-          The steps to join a lottery are really simple. All you need to do is:
-          <ul>
-            <li>Pick a lottery and decide an amount you would like to bet</li>
-            <li>Send this amount to the lottery bitcoin address (Scan QR or copy address)</li>
-            <li>Make sure to pay enough transaction fee to get 1 confirm before end time</li>
-            <li>When transaction got 1 confirm you will have an entry</li>
-          </ul>
-          Please note that your bitcoin transaction must get 1 confirm before the lottery ends. <br>
-          If not, your entry will not be included in the drawing.<br/>
-          For calculating the fee, you may use this website: https://bitcoinfees.21.co/
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'I want to join a lottery - what are the steps?',
+                          'The steps to join a lottery are really simple. All you need to do is:
+                          <ul>
+                            <li>Pick a lottery and decide an amount you would like to bet</li>
+                            <li>Send this amount to the lottery bitcoin address (Scan QR or copy address)</li>
+                            <li>Make sure to pay enough transaction fee to get 1 confirm before end time</li>
+                            <li>When transaction got 1 confirm you will have an entry</li>
+                          </ul>
+                          Please note that your bitcoin transaction must get 1 confirm before the lottery ends. <br>
+                          If not, your entry will not be included in the drawing.<br/>
+                          For calculating the fee, you may use this website: https://bitcoinfees.21.co/' %>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Are there any limits of entry?</a>
-        </h4>
-      </div>
-      <div id="collapseSeven" class="panel-collapse collapse">
-        <div class="panel-body">
-          No. There are no rules to who can join. Bitcoin knows no borders, regulations or limitations. <br>
-          No matter the country, race, social status and so on. Anyone can participate. <br>
-          You can pay as little or as much as you want.
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'Are there any limits of entry?',
+                          'No. There are no rules to who can join. Bitcoin knows no borders, regulations or limitations. <br>
+                          No matter the country, race, social status and so on. Anyone can participate. <br>
+                          You can pay as little or as much as you want.' %>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">Is it possible to cancel my entry?</a>
-        </h4>
-      </div>
-      <div id="collapseEight" class="panel-collapse collapse">
-        <div class="panel-body">
-          Bitcoin payments are final. Once you have sent payment you have agreed to participate in the drawing. <br>
-          For fairness of other players we cannot change the end date or reduce the prize when it has increased.
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'Is it possible to cancel my entry?',
+                          'Bitcoin payments are final. Once you have sent payment you have agreed to participate in the drawing. <br>
+                          For fairness of other players we cannot change the end date or reduce the prize when it has increased.' %>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine">My transaction was not confirmed in time, how do i get it back?</a>
-        </h4>
-      </div>
-      <div id="collapseNine" class="panel-collapse collapse">
-        <div class="panel-body">
-          At the moment we will have to return your payment manually. <br>
-          Please contact us and we will return your payment within 24 hours. <br>
-          Later in development we would like to automate this process.
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'My transaction was not confirmed in time, how do i get it back?',
+                          'At the moment we will have to return your payment manually. <br>
+                          Please contact us and we will return your payment within 24 hours. <br>
+                          Later in development we would like to automate this process.' %>
 
 
     <div class="faqHeader">Drawing</div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">How does a lottery end?</a>
-        </h4>
-      </div>
-      <div id="collapseTen" class="panel-collapse collapse">
-        <div class="panel-body">
-          The lottery ends within 1 minute of end date. You can see this date in the lottery overview. <br>
-          When the lottery ends, a winner will be picked automatically. <br>
-          Then the prize is sent to the winner minus the fees.
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'How does a lottery end?',
+                          'The lottery ends within 1 minute of end date. You can see this date in the lottery overview. <br>
+                          When the lottery ends, a winner will be picked automatically. <br>
+                          Then the prize is sent to the winner minus the fees.' %>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">How is the winner picked?</a>
-        </h4>
-      </div>
-      <div id="collapseEleven" class="panel-collapse collapse">
-        <div class="panel-body">
-          The winner is picked by random with chance based on the amount that was paid in the transaction compared to the prize. <br>
-          For example if you paid 0.5 BTC and the prize is 1 BTC, your chance of winning the lottery will be 50%.
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'How is the winner picked?',
+                          'The winner is picked by random with chance based on the amount that was paid in the transaction compared to the prize. <br>
+                          For example if you paid 0.5 BTC and the prize is 1 BTC, your chance of winning the lottery will be 50%.' %>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve">Why is there a delay before prize is sent to the winner?</a>
-        </h4>
-      </div>
-      <div id="collapseTwelve" class="panel-collapse collapse">
-        <div class="panel-body">
-          The API we use to process Bitcoin transactions require all transaction inputs to have at least 3 confirms before it can be sent, as a safety feature. The payment will be sent to the winner as soon as all the lottery entry transactions has gotten at least 3 confirms. This means that potentially the prize may be delayed up to 3 bitcoin confirms after it ended, which is on average 30 minutes. This can vary from seconds to hours, but rest assure the prize will be sent as soon as possible.
-        </div>
-      </div>
-    </div>
+    <%= staticPage.getFAQ 'Why is there a delay before prize is sent to the winner?',
+                          'The API we use to process Bitcoin transactions require all transaction inputs to have at least 3 confirms before it can be sent, as a safety feature. <br>
+                          The payment will be sent to the winner as soon as all the lottery entry transactions has gotten at least 3 confirms. <br>
+                          This means that potentially the prize may be delayed up to 3 bitcoin confirms after it ended, which is on average 30 minutes. <br>
+                          This can vary from seconds to hours, but rest assure the prize will be sent as soon as possible.' %>
 
   </div>
 </div>
