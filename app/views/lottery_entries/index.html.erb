@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-md-12">
         <h1 class="text-center">
-          Lotteries
+          Lottery entries
         </h1>
      </div>
       <div id="no-more-tables">
@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @lottery_entries.each do |l| %>
+        <% @lottery_entries.reverse_each do |l| %>
               <tr>
                 <td data-title = "Entry Id"  ><%= l.id %></td>
                 <td data-title = "Lottery" ><%= link_to l.lottery_id, lottery_path(l.lottery_id) %></td>

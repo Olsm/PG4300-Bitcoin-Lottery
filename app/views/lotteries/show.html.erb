@@ -1,66 +1,66 @@
+<div class = "outer_lottery_show">
+  <div class="col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-3">
 
-<div class="col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-3">
-
-  <div class="fieldset">
-    <h5>
-      <strong>Lottery #<%= @lottery.id %></strong>
-    </h5>
+    <div class="fieldset">
 
 
 
 
-    <dl>
-      <dt>
+      <dl>
+        <dt>
  <span class="text_field label label-info string_type">
  Status
  </span>
-      </dt>
-      <dd class="well">
-        <%= @lottery.status %>
-      </dd>
-      <dt>
+        </dt>
+        <dd class="well">
+          <%= @lottery.status %>
+        </dd>
+        <dt>
   <span class="decimal_type label label-info prize_amount_field">
  Prize amount
  </span>
-      </dt>
-      <dd class="well">
-        <%= @lottery.prize_amount %>
-      </dd>
+        </dt>
+        <dd class="well">
+          <%= @lottery.prize_amount %>
+        </dd>
 
-      <dt>
+        <dt>
   <span class="bitcoin_address_field label label-info string_type">
  Bitcoin address
  </span>
-      </dt>
-      <dd class="well">
-        <%= link_to @lottery.bitcoin_address, "https://blockchain.info/address/" + @lottery.bitcoin_address %>
-      </dd>
+        </dt>
+        <dd class="well">
+          <%= link_to @lottery.bitcoin_address, "https://blockchain.info/address/" + @lottery.bitcoin_address %>
+        </dd>
 
-      <dt>
+        <dt>
   <span class="QR_code_field label label-info string_type">
- +QR-code
+ QR-code
  </span>
-      </dt>
-      <dd class="well">
-        <img src=<%=@lottery.qr_code%>>
-      </dd>
+        </dt>
+        <dd class="well">
+          <img src=<%=@lottery.qr_code%>>
 
-      <dt>
+        </dd>
+
+        <dt>
   <span class="datetime_type ends_at_field label label-info">
  Ends at
  </span>
-      </dt>
-      <dd class="well">
-        <%= @lottery.ends_at %>
-      </dd>
-      <dt>
+        </dt>
+        <dd class="well">
+          <%= @lottery.ends_at %>
+        </dd>
+        <dt>
   <span class="entries_field has_many_association_type label label-info">
  Winner
  </span>
-      </dt>
-      <dd class="well">
-        <%= link_to @lottery.winner_entry, lottery_entry_path(@lottery.winner_entry) unless @lottery.winner_entry.blank? %><%=  %>
-      </dd>
-    </dl>
+        </dt>
+        <dd class="well">
+          <%=  @lottery.winner_entry unless @lottery.winner_entry.blank? %><%=  %>
+        </dd>
+      </dl>
+    </div>
   </div>
-  </div>
+
+</div>
