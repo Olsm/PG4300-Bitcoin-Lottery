@@ -1,2 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+one:
+  bitcoin_address: MyString
+  amount_charged: 9.99
+  lottery_id: 1
+  user_id: 1
+  transaction_id: MyString
+
+two:
+  bitcoin_address: MyString
+  amount_charged: 9.99
+  lottery_id: 2
+  user_id: 1
+  transaction_id: MyString

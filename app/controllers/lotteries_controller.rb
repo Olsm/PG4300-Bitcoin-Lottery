@@ -1,5 +1,6 @@
 class LotteriesController < ApplicationController
   before_action :set_lottery, only: [:show, :edit, :update, :destroy]
+
   # GET /lotteries
   # GET /lotteries.json
   def index
@@ -67,13 +68,13 @@ class LotteriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lottery
-      @lottery = Lottery.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lottery
+    @lottery = Lottery.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def lottery_params
-      params.require(:lottery).permit(:lottery_id, :prize_amount, :user_id, :bitcoin_address)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def lottery_params
+    params.require(:lottery).permit(:prize_amount, :bitcoin_address, :winner_entry, :ends_at, :transaction_id)
+  end
 end

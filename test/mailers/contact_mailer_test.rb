@@ -2,10 +2,11 @@ require 'test_helper'
 
 class ContactMailerTest < ActionMailer::TestCase
   test "contact_confirmation" do
-    mail = ContactMailer.contact_confirmation
-    assert_equal "Contact confirmation", mail.subject
-    assert_equal ["to@example.org"], mail.to
-    assert_equal ["from@example.com"], mail.from
+    contact = Contact.new(:name => "suchName", :email => "such@mail.wow", :message => "Very message")
+    mail = ContactMailer.contact_confirmation contact
+    assert_equal "Bitcoin Lottery Contact Confirmation", mail.subject
+    assert_equal ["such@mail.wow"], mail.to
+    assert_equal ["bitcoinlottery@immortaltools.com"], mail.from
     assert_match "Hi", mail.body.encoded
   end
 

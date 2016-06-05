@@ -1,1 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bitcoinaddress: MyString
+  email: much@test.com
+  encrypted_password: MyString
+  reset_password_token: token1
+  reset_password_sent_at: 2016-06-05 20:43:59
+  remember_created_at: 2016-06-05 20:43:59
+  sign_in_count: 1
+  current_sign_in_at: 2016-06-05 20:43:59
+  last_sign_in_at: 2016-06-05 20:43:59
+  current_sign_in_ip: MyString
+  last_sign_in_ip: MyString
+  provider: MyString
+  uid: MyString
+
+two:
+  bitcoinaddress: MyString
+  email: such@test.com
+  encrypted_password: MyString
+  reset_password_token: token2
+  reset_password_sent_at: 2016-06-05 20:43:59
+  remember_created_at: 2016-06-05 20:43:59
+  sign_in_count: 1
+  current_sign_in_at: 2016-06-05 20:43:59
+  last_sign_in_at: 2016-06-05 20:43:59
+  current_sign_in_ip: MyString
+  last_sign_in_ip: MyString
+  provider: MyString
+  uid: MyString

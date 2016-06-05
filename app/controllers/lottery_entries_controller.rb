@@ -62,13 +62,13 @@ class LotteryEntriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lottery_entry
-      @lottery_entry = LotteryEntry.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lottery_entry
+    @lottery_entry = LotteryEntry.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def lottery_entry_params
-      params.require(:lottery_entry).permit(:email, :bitcoin_address, :amount_charged)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def lottery_entry_params
+    params.require(:lottery_entry).permit(:bitcoin_address, :amount_charged, :lottery_id, :user_id, :transaction_id)
+  end
 end
