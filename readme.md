@@ -7,7 +7,7 @@
 * Email: Valmirmemeti@gmail.com
 * Westerdals: memval14
 
-**Olav Sm�riset**
+**Olav Småriset**
 * Github: Olsm
 * Email: OlavSmaariset@gmail.com
 * Westerdals: smaola14
@@ -105,7 +105,7 @@ To run all features
 bundle install
 ```
 
-Please note that most features are not implemented yet
+Note that most feature tests are not implemented yet
 
 Tu run one feature
 
