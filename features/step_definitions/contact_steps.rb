@@ -28,7 +28,7 @@ end
 And(/^Bitcoin lottery should get my submission$/) do
   email = ActionMailer::Base.deliveries.first
   assert_equal ["very@mail.wow"], email.from
-  assert_equal ["admin@example.com"], email.to
+  assert_equal ["bitcoinlottery@immortaltools.com"], email.to
   assert_match /Bitcoin Lottery Contact Submission/, email.body.raw_source
   assert_match /very@mail.wow/, email.body.raw_source
   assert_match /Much message!/, email.body.raw_source
@@ -36,7 +36,7 @@ end
 
 And(/^I should receive a confirmation email$/) do
   email = ActionMailer::Base.deliveries[1]
-  assert_equal ["admin@example.com"], email.from
+  assert_equal ["bitcoinlottery@immortaltools.com"], email.from
   assert_equal ["very@mail.wow"], email.to
   assert_match /Thank you for contacting Bitcoin Lottery/, email.body.raw_source
 end
