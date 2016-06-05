@@ -2,9 +2,9 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-3">
 
   <div class="fieldset">
-    <h4>
+    <h5>
       <strong>Lottery #<%= @lottery.id %></strong>
-    </h4>
+    </h5>
 
 
 
@@ -33,17 +33,8 @@
  </span>
       </dt>
       <dd class="well">
-        <%= @lottery.bitcoin_address %>
+        <%= link_to @lottery.bitcoin_address, "https://blockchain.info/address/" + @lottery.bitcoin_address %>
       </dd>
-<p>
-  <strong>User:</strong>
-  <%= @lottery.user_id %>
-</p>
-
-<p>
-  <strong>Bitcoin address:</strong>
-  <%= link_to @lottery.bitcoin_address, "https://blockchain.info/address/" + @lottery.bitcoin_address %>
-</p>
 
       <dt>
   <span class="QR_code_field label label-info string_type">
