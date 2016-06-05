@@ -1,10 +1,9 @@
 class LotteriesController < ApplicationController
   before_action :set_lottery, only: [:show, :edit, :update, :destroy]
-
   # GET /lotteries
   # GET /lotteries.json
   def index
-    @lotteries = Lottery.all
+    @lotteries = Lottery.page(params[:page]).per(5)
   end
 
   # GET /lotteries/1
