@@ -102,7 +102,7 @@ rake test
 To run all features
 
 ```sh
-bundle install
+rake features
 ```
 
 Note that most feature tests are not implemented yet
