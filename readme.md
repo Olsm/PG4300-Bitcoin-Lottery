@@ -7,7 +7,7 @@
 * Email: Valmirmemeti@gmail.com
 * Westerdals: memval14
 
-**Olav Småriset**
+**Olav Smï¿½riset**
 * Github: Olsm
 * Email: OlavSmaariset@gmail.com
 * Westerdals: smaola14
@@ -75,6 +75,11 @@ server 'server_address', user: 'deployer', roles: %w{web app db}
 ```
 Be sure to also setup the *database.yml* file correctly based on what environment you wish to deploy.
 
+Finally run deploy
+```sh
+cap production deploy
+```
+
 ## Limitations
 Although we feel the project fullfills our original main goals, it is still not accurate to say that the application is in itself complete. Sure, the users are able to play the lottery and the main functions of the site work, but we still wish to improve on the users experience. If we had more time on the project we would improve on the following:
 ##### Design
@@ -88,11 +93,29 @@ As of now users can only use Bitcoin to join the lottery, and although they can 
 
 ## Tests
 
-TODO: Describe and show how to run the tests with code examples.
+To run all unit tests
+
+```sh
+rake test
+```
+
+To run all features
+
+```sh
+bundle install
+```
+
+Please note that most features are not implemented yet
+
+Tu run one feature
+
+```sh
+cucumber --require features features/contact.feature
+```
 
 ## Contributors
 
-The contributors of this project are: Valmir95 and Olavolsm
+The contributors of this project are: Valmir95 and Olsm
 
 ## License
 
