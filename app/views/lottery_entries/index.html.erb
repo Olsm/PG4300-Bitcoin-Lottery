@@ -22,13 +22,15 @@
                 <td data-title = "Entry Id"  ><%= l.id %></td>
                 <td data-title = "Lottery" ><%= link_to l.lottery_id, lottery_path(l.lottery_id) %></td>
                 <td data-title = "Paid"  ><%= l.amount_charged %></td>
-                <td data-title = "Transaction Id"><%= l.transaction_id %></td>
+                <td data-title = "Transaction Id"><%= link_to l.transaction_id, "https://blockchain.info/tx/" + l.transaction_id %></td>
                 <td data-title = "Created At"><%= l.created_at %></td>
 
               </tr>
             <% end %>
         </tbody>
         </table>
+        <%= paginate @lottery_entries %>
+
       </div>
     </div>
   </div>
