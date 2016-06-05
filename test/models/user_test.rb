@@ -13,10 +13,4 @@ class UserTest < ActiveSupport::TestCase
   def teardown
     # Do nothing
   end
-
-  # Fake test
-  def test_fail
-
-    fail('Not implemented')
-  end
 end
