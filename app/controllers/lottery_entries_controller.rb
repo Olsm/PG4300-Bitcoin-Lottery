@@ -4,7 +4,7 @@ class LotteryEntriesController < ApplicationController
   # GET /lottery_entries
   # GET /lottery_entries.json
   def index
-    @lottery_entries = LotteryEntry.all
+    @lottery_entries = LotteryEntry.page(params[:page]).per(5)
   end
 
   # GET /lottery_entries/1
