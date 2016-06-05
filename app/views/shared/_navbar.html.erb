@@ -17,11 +17,15 @@
     <% if user_signed_in? %>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
+            <li><%= link_to "Lottery entries", lottery_entries_path%></li>
+
             <li class="inactive"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %> <span class="sr-only">(current)</span></li>
+
             <li><%= link_to "Edit profile", edit_user_registration_path %></li>
             <li><%= link_to "F.A.Q", static_pages_faq_path%></li>
             <li><%= link_to "About us", static_pages_about_path%></li>
-            <li><%= link_to "Lottery entries", lottery_entries_path%></li>
+            <li><%= link_to "Contact", contact_path%></li>
+
           </ul>
           <% if current_user.try(:admin?)%>
               <ul class="nav navbar-nav navbar-right">
@@ -32,6 +36,8 @@
     <%else%>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
+            <li><%= link_to "Lottery entries", lottery_entries_path%></li>
+
             <li class="inactive"> <%= link_to "Sign In", new_user_session_path %> <span class="sr-only">(current)</span></li>
             <li><%= link_to "Sign Up", new_user_registration_path %></li>
             <li class="dropdown">
@@ -45,7 +51,8 @@
               </ul>
             <li><%= link_to "F.A.Q", static_pages_faq_path%></li>
             <li><%= link_to "About us", static_pages_about_path%></li>
-            <li><%= link_to "Lottery entries", lottery_entries_path%></li>
+            <li><%= link_to "Contact", contact_path%></li>
+
 
             </li>
           </ul>
